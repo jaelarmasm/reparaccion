@@ -34,14 +34,29 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
+                'display_name' => 'Nombre',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
-                'delete'       => 1,
+                'delete'       => 0,
                 'order'        => 2,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($userDataType, 'username');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Username',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 3,
             ])->save();
         }
 
@@ -55,8 +70,8 @@ class DataRowsTableSeeder extends Seeder
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
-                'delete'       => 1,
-                'order'        => 3,
+                'delete'       => 0,
+                'order'        => 4,
             ])->save();
         }
 
@@ -71,7 +86,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
 
@@ -86,7 +101,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 5,
+                'order'        => 10,
             ])->save();
         }
 
@@ -101,7 +116,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 6,
+                'order'        => 12,
             ])->save();
         }
 
@@ -112,11 +127,11 @@ class DataRowsTableSeeder extends Seeder
                 'display_name' => __('voyager::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
-                'read'         => 0,
+                'read'         => 1,
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 7,
+                'order'        => 13,
             ])->save();
         }
 
@@ -131,7 +146,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
 
@@ -156,7 +171,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'roles',
                     'pivot'       => 0,
                 ],
-                'order'        => 10,
+                'order'        => 7,
             ])->save();
         }
 
@@ -182,7 +197,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => '1',
                     'taggable'    => '0',
                 ],
-                'order'        => 11,
+                'order'        => 8,
             ])->save();
         }
 
@@ -197,7 +212,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 12,
+                'order'        => 14,
             ])->save();
         }
 
@@ -347,7 +362,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 9,
+                'order'        => 6,
             ])->save();
         }
     }

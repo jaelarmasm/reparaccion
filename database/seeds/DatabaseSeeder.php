@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use TCG\Voyager\Traits\Seedable;
 
 class DatabaseSeeder extends Seeder
 {
+    use Seedable;
     /**
      * Seed the application's database.
      *
@@ -11,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->seed('VoyagerDatabaseSeeder');
     }
 }

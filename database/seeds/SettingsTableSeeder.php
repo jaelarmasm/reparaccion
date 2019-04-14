@@ -62,7 +62,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.background_image'),
-                'value'        => '',
+                'value'        => 'settings/default/background.jpg',
                 'details'      => '',
                 'type'         => 'image',
                 'order'        => 5,
@@ -74,7 +74,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.title'),
-                'value'        => 'Voyager',
+                'value'        => 'Reparacción',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 1,
@@ -86,7 +86,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.description'),
-                'value'        => __('voyager::seeders.settings.admin.description_value'),
+                'value'        => 'Bienvenido a la administración de Reparacción',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 2,
@@ -98,7 +98,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.loader'),
-                'value'        => '',
+                'value'        => 'settings/default/loader.png',
                 'details'      => '',
                 'type'         => 'image',
                 'order'        => 3,
@@ -110,7 +110,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.icon_image'),
-                'value'        => '',
+                'value'        => 'settings/default/icon_image.png',
                 'details'      => '',
                 'type'         => 'image',
                 'order'        => 4,

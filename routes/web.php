@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::post('login', ['uses' => 'AdminController@postLogin', 'as' => 'postlogin']);
 });

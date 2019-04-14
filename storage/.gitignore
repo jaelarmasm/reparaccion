@@ -1,0 +1,9 @@
+*
+!.gitignore
+!/users
+/users/*
+!/users/default.png
+!/settings
+/settings/*
+!/settings/default
+!/settings/default/*
