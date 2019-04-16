@@ -52,6 +52,21 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
+
+        // TODO plans
+        $dataType = $this->dataType('slug', 'plans');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'plans',
+                'display_name_singular' => 'Plan',
+                'display_name_plural'   => 'Planes',
+                'icon'                  => 'voyager-credit-card',
+                'model_name'            => 'App\\Plan',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
     }
 
     /**
