@@ -21,14 +21,14 @@ class Contrato extends Model
     //
     public function contratista()
     {
-        $this->belongsTo(Contratista::class);
+        return $this->belongsTo(Contratista::class);
     }
     public function estado()
     {
-        $this->belongsTo(Estado::class);
+        return $this->belongsTo(Estado::class);
     }
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

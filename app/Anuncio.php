@@ -19,12 +19,12 @@ class Anuncio extends Model
 
     public function contratista()
     {
-        $this->belongsTo(Contratista::class);
+        return $this->belongsTo(Contratista::class);
     }
 
     public function tipo_trabajo()
     {
-        $this->belongsTo(TipoTrabajo::class);
+        return $this->belongsTo(TipoTrabajo::class);
     }
 
     

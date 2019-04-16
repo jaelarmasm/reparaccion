@@ -26,6 +26,9 @@ class AnuncioController extends Controller
     public function store(Request $request)
     {
         //
+        $anuncio=Anuncio::create($request->all());                 
+        $res=$anuncio->save();
+        return response($res,200);
     }
 
     /**

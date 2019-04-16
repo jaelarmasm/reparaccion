@@ -10,6 +10,6 @@ class Estado extends Model
     //
     public function contratos()
     {
-        $this->hasMany(Contrato::class);
+        return $this->hasMany(Contrato::class);
     }  
 }

@@ -14,6 +14,6 @@ class Plan extends Model
     //
     public function contratistas()
     {
-        $this->hasMany(Contratista::class);
+        return $this->hasMany(Contratista::class);
     }    
 }

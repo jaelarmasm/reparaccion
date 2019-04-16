@@ -15,12 +15,12 @@ class Contratista extends Model
     //
     public function anuncios()
     {
-        $this->hasMany(Anuncio::class);
+        return $this->hasMany(Anuncio::class);
     }
 
     public function contratos()
     {
-        $this->hasMany(Contrato::class);
+        return $this->hasMany(Contrato::class);
     }
 
     public function tipo_trabajos()
