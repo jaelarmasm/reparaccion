@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoTrabajo extends Model
 {
+    protected $fillable = ['nombre'];
     //
     public function contratistas()
     {

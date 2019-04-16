@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contrato extends Model
 {
+
+    protected $fillable = [
+        'user_id',
+        'contratista_id',
+        'estado_id',
+        'descripcion',
+        'foto',
+        'ubicacion',
+        'costo',
+        'calificacion'
+    ];
+
     //
     public function contratista()
     {
