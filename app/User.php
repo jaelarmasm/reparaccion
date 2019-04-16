@@ -39,4 +39,23 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
+
+    public function contratistas()
+    {
+        return $this->hasMany(Contratista::class);
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'user_roles');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
