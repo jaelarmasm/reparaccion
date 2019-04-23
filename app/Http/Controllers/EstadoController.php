@@ -14,7 +14,8 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        $estados = Estado::all();
+        return response()->json($estados, 200);
     }
 
     /**
@@ -25,7 +26,9 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estado = Estado::create($request->all());
+        $res = $estado->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -36,7 +39,9 @@ class EstadoController extends Controller
      */
     public function show(Estado $estado)
     {
-        //
+        $estado = Estado::create($estado);
+        $res = $estado->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -48,7 +53,8 @@ class EstadoController extends Controller
      */
     public function update(Request $request, Estado $estado)
     {
-        //
+        $estado = Estado::firstOrCreate($request->all());
+        return response()->json($estado, 200);
     }
 
     /**
@@ -59,6 +65,7 @@ class EstadoController extends Controller
      */
     public function destroy(Estado $estado)
     {
-        //
+        $estado = Estado::destroy($estado);
+        return response()->json($estado, 200);
     }
 }

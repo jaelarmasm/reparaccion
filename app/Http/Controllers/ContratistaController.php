@@ -14,7 +14,8 @@ class ContratistaController extends Controller
      */
     public function index()
     {
-        //
+        $contratista = Contratista::all();
+        return response()->json($contratista, 200);
     }
 
     /**
@@ -25,7 +26,9 @@ class ContratistaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contratista = Contratista::create($request->all());
+        $res = $contratista->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -36,7 +39,9 @@ class ContratistaController extends Controller
      */
     public function show(Contratista $contratista)
     {
-        //
+        $contratista = Contratista::create($contratista);
+        $res = $contratista->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -48,7 +53,8 @@ class ContratistaController extends Controller
      */
     public function update(Request $request, Contratista $contratista)
     {
-        //
+        $contratista = Contratista::firstOrCreate($request->all());
+        return response()->json($contratista, 200);
     }
 
     /**
@@ -59,6 +65,7 @@ class ContratistaController extends Controller
      */
     public function destroy(Contratista $contratista)
     {
-        //
+        $contratista = Contratista::destroy($contratista);
+        return response()->json($contratista, 200);
     }
 }

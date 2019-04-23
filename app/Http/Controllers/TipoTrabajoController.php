@@ -14,7 +14,8 @@ class TipoTrabajoController extends Controller
      */
     public function index()
     {
-        //
+        $tipoTrabajos = TipoTrabajo::all();
+        return response()->json($tipoTrabajos, 200);
     }
 
     /**
@@ -25,7 +26,9 @@ class TipoTrabajoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipoTrabajo = TipoTrabajo::create($request->all());
+        $res = $tipoTrabajo->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -36,7 +39,9 @@ class TipoTrabajoController extends Controller
      */
     public function show(TipoTrabajo $tipoTrabajo)
     {
-        //
+        $tipoTrabajo = TipoTrabajo::create($tipoTrabajo);
+        $res = $tipoTrabajo->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -48,7 +53,8 @@ class TipoTrabajoController extends Controller
      */
     public function update(Request $request, TipoTrabajo $tipoTrabajo)
     {
-        //
+        $tipoTrabajo = TipoTrabajo::firstOrCreate($request->all());
+        return response()->json($tipoTrabajo, 200);
     }
 
     /**
@@ -59,6 +65,7 @@ class TipoTrabajoController extends Controller
      */
     public function destroy(TipoTrabajo $tipoTrabajo)
     {
-        //
+        $tipoTrabajo = TipoTrabajo::destroy($tipoTrabajo);
+        return response()->json($tipoTrabajo, 200);
     }
 }

@@ -14,7 +14,8 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        //
+        $contratos = Contrato::all();
+        return response()->json($contratos, 200);
     }
 
     /**
@@ -25,7 +26,9 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contrato = Contrato::create($request->all());
+        $res = $contrato->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -36,7 +39,9 @@ class ContratoController extends Controller
      */
     public function show(Contrato $contrato)
     {
-        //
+        $contrato = Contrato::create($contrato);
+        $res = $contrato->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -48,7 +53,8 @@ class ContratoController extends Controller
      */
     public function update(Request $request, Contrato $contrato)
     {
-        //
+        $contrato = Contrato::firstOrCreate($request->all());
+        return response()->json($contrato, 200);
     }
 
     /**
@@ -59,6 +65,7 @@ class ContratoController extends Controller
      */
     public function destroy(Contrato $contrato)
     {
-        //
+        $contrato = Contrato::destroy($contrato);
+        return response()->json($contrato, 200);
     }
 }

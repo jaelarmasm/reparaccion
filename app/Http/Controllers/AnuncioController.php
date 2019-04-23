@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\anuncio;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AnuncioController extends Controller
 {
@@ -14,7 +15,8 @@ class AnuncioController extends Controller
      */
     public function index()
     {
-        //
+        $anuncios = Anuncio::all();
+        return response()->json($anuncios, 200);
     }
 
     /**
@@ -25,10 +27,10 @@ class AnuncioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $anuncio=Anuncio::create($request->all());                 
-        $res=$anuncio->save();
-        return response($res,200);
+
+        $anuncio = Anuncio::create($request->all());
+        $res = $anuncio->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -39,7 +41,9 @@ class AnuncioController extends Controller
      */
     public function show(anuncio $anuncio)
     {
-        //
+        $anuncio = Anuncio::create($anuncio);
+        $res = $anuncio->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -51,7 +55,9 @@ class AnuncioController extends Controller
      */
     public function update(Request $request, anuncio $anuncio)
     {
-        //
+
+        $anuncio = Anuncio::firstOrCreate($request->all());
+        return response()->json($anuncio, 200);
     }
 
     /**
@@ -61,7 +67,8 @@ class AnuncioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(anuncio $anuncio)
-    {
-        //
+    {        
+        $anuncio = Anuncio::destroy($anuncio);
+        return response()->json($anuncio, 200);
     }
 }

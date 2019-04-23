@@ -14,7 +14,8 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //
+        $plans = Plan::all();
+        return response()->json($plans, 200);
     }
 
     /**
@@ -25,7 +26,9 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plan = Plan::create($request->all());
+        $res = $plan->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -36,7 +39,9 @@ class PlanController extends Controller
      */
     public function show(Plan $plan)
     {
-        //
+        $plan = Plan::create($plan);
+        $res = $plan->save();
+        return response()->json($res, 200);
     }
 
     /**
@@ -48,7 +53,8 @@ class PlanController extends Controller
      */
     public function update(Request $request, Plan $plan)
     {
-        //
+        $plan = Plan::firstOrCreate($request->all());
+        return response()->json($plan, 200);
     }
 
     /**
@@ -59,6 +65,7 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan)
     {
-        //
+        $plan = Plan::destroy($plan);
+        return response()->json($plan, 200);
     }
 }
