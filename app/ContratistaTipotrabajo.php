@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoContratista extends Model
+class ContratistaTipotrabajo extends Model
 {
     //
     protected $fillable = [
         'contratista_id',
-        'tipo_trabajo_id'
+        'tipotrabajo_id'
     ];
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+// use TCG\Voyager\Traits\Spatial;
 
 class Contrato extends Model
 {
@@ -18,7 +19,10 @@ class Contrato extends Model
         'calificacion'
     ];
 
-    //
+    // use Spatial;
+
+    // protected $spatial = ['ubicacion'];
+
     public function contratista()
     {
         return $this->belongsTo(Contratista::class);

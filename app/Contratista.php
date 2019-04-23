@@ -12,7 +12,7 @@ class Contratista extends Model
         'descripcion',
         'ultima_ubicacion'
     ];
-    //
+    
     public function anuncios()
     {
         return $this->hasMany(Anuncio::class);
@@ -23,9 +23,9 @@ class Contratista extends Model
         return $this->hasMany(Contrato::class);
     }
 
-    public function tipo_trabajos()
+    public function tipotrabajos()
     {
-        return $this->belongsToMany(TipoTrabajo::class,'tipo_contratistas');
+        return $this->belongsToMany(TipoTrabajo::class,'contratista_tipotrabajo');
     }
     public function user()
     {

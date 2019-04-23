@@ -27,10 +27,19 @@ class UsersTableSeeder extends Seeder
             ]);
 
             factory(User::class)->create([
-                'name'           => 'User One',
+                'name'           => 'Cliente Uno',
                 'username'       => 'user',
                 'email'          => 'user@email.com',
                 'password'       => bcrypt('user'),
+            ]);
+            
+            $role = Role::where('name', 'contratista')->firstOrFail();
+            factory(User::class)->create([
+                'name'           => 'Contratista Uno',
+                'username'       => 'contra',
+                'email'          => 'contra@email.com',
+                'password'       => bcrypt('contra'),
+                'role_id'        => $role->id,
             ]);
         }
     }

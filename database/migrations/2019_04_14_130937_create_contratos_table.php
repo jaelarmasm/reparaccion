@@ -16,13 +16,13 @@ class CreateContratosTable extends Migration
         Schema::create('contratos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('contratista_id')->unsigned();
-            $table->bigInteger('estado_id')->unsigned();
+            $table->bigInteger('contratista_id')->unsigned()->nullable();
+            $table->bigInteger('estado_id')->unsigned()->default(1);
             $table->text('descripcion');
             $table->string('foto');
-            $table->string('ubicacion');
-            $table->float('costo');
-            $table->float('calificacion');
+            $table->string('ubicacion')->nullable();
+            $table->float('costo')->nullable();
+            $table->float('calificacion')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('contratista_id')->references('id')->on('contratistas');

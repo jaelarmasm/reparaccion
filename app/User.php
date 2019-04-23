@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use TCG\Voyager\Models\Role;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -49,6 +50,7 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(Contratista::class);
     }
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class,'user_roles');
