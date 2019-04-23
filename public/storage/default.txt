@@ -1,0 +1,2 @@
+Este es un archivo para mantener el directorio por defecto de almacenamiento;
+En caso de que algo vaya mal, los archivos multimedia se almacenarán aqui.

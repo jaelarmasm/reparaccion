@@ -9,7 +9,7 @@ class Anuncio extends Model
     //
     protected $fillable = [
             'contratista_id',
-            'tipo_trabajo_id',
+            'tipotrabajo_id',
             'titulo',
             'imagen',
             'descripcion',
@@ -22,7 +22,7 @@ class Anuncio extends Model
         $this->belongsTo(Contratista::class);
     }
 
-    public function tipo_trabajo()
+    public function tipotrabajo()
     {
         $this->belongsTo(TipoTrabajo::class);
     }

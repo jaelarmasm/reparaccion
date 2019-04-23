@@ -16,15 +16,15 @@ class CreateAnunciosTable extends Migration
         Schema::create('anuncios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('contratista_id')->unsigned();
-            $table->bigInteger('tipo_trabajo_id')->unsigned();
+            $table->bigInteger('tipotrabajo_id')->unsigned();
             $table->string('titulo');
             $table->string('imagen');
             $table->text('descripcion');
-            $table->boolean('aprovado');
-            $table->integer('clicks');
+            $table->boolean('aprovado')->default(false);
+            $table->integer('clicks')->nullable();
             $table->timestamps();
             $table->foreign('contratista_id')->references('id')->on('contratistas');
-            $table->foreign('tipo_trabajo_id')->references('id')->on('tipo_trabajos');
+            $table->foreign('tipotrabajo_id')->references('id')->on('tipotrabajos');
         });
     }
 
@@ -38,8 +38,8 @@ class CreateAnunciosTable extends Migration
         Schema::table('anuncios', function (Blueprint $table) {
             $table->dropForeign(['contratista_id']);
             $table->dropColumn('contratista_id');
-            $table->dropForeign(['tipo_trabajo_id']);
-            $table->dropColumn('tipo_trabajo_id');
+            $table->dropForeign(['tipotrabajo_id']);
+            $table->dropColumn('tipotrabajo_id');
         });
         Schema::dropIfExists('anuncios');
     }
