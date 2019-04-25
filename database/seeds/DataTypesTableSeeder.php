@@ -52,6 +52,97 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
+
+        // TODO BREAD 1
+        // plans
+        $dataType = $this->dataType('slug', 'plans');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'plans',
+                'display_name_singular' => 'Plan',
+                'display_name_plural'   => 'Planes',
+                'icon'                  => 'voyager-credit-card',
+                'model_name'            => 'App\\Plan',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        // estados
+        $dataType = $this->dataType('slug', 'estados');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'estados',
+                'display_name_singular' => 'Estado Para Contrato',
+                'display_name_plural'   => 'Estados Para Contratos',
+                'icon'                  => 'voyager-edit',
+                'model_name'            => 'App\\Estado',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        // tipo_trabajos
+        $dataType = $this->dataType('slug', 'tipotrabajos');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'tipotrabajos',
+                'display_name_singular' => 'Tipo De Trabajo',
+                'display_name_plural'   => 'Tipos De Trabajo',
+                'icon'                  => 'voyager-brush',
+                'model_name'            => 'App\\Tipotrabajo',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        // contratistas
+        $dataType = $this->dataType('slug', 'contratistas');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'contratistas',
+                'display_name_singular' => 'Contratista',
+                'display_name_plural'   => 'Contratistas',
+                'icon'                  => 'voyager-hammer',
+                'model_name'            => 'App\\Contratista',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        // contratos
+        $dataType = $this->dataType('slug', 'contratos');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'contratos',
+                'display_name_singular' => 'Contrato',
+                'display_name_plural'   => 'Contratos',
+                'icon'                  => 'voyager-documentation',
+                'model_name'            => 'App\\Contrato',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        // anuncios
+        $dataType = $this->dataType('slug', 'anuncios');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'anuncios',
+                'display_name_singular' => 'Anuncio',
+                'display_name_plural'   => 'Anuncios',
+                'icon'                  => 'voyager-megaphone',
+                'model_name'            => 'App\\Anuncio',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
     }
 
     /**

@@ -124,7 +124,6 @@ if (starts_with(app('VoyagerAuth')->user()->avatar, 'http://') || starts_with(ap
 
     @if(Session::has('message'))
 
-    // TODO: change Controllers to use AlertsMessages trait... then remove this
     var alertType = {!! json_encode(Session::get('alert-type', 'info')) !!};
     var alertMessage = {!! json_encode(Session::get('message')) !!};
     var alerter = toastr[alertType];

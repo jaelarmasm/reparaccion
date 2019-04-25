@@ -32,5 +32,18 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('users');
 
         Permission::generateFor('settings');
+
+        // TODO BREAD 3
+        Permission::generateFor('plans');
+
+        Permission::generateFor('estados');
+
+        Permission::generateFor('tipotrabajos');
+
+        Permission::generateFor('contratistas');
+
+        Permission::generateFor('contratos');
+
+        Permission::generateFor('anuncios');
     }
 }
