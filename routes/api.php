@@ -18,3 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('anuncio', 'AnuncioController');
+Route::resource('contratista', 'ContratistaController');
+Route::resource('contrato', 'ContratoController');
+Route::resource('estado', 'EstadoController');
+Route::resource('plan', 'PlanController');
+Route::resource('tipotrabajo', 'TipoTrabajoController');
