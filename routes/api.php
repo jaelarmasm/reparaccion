@@ -25,4 +25,4 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api'], function()
     Route::resource('plan', 'PlanController');
     Route::resource('tipotrabajo', 'TipoTrabajoController');
 
-}
+});
