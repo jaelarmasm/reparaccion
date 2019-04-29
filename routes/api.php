@@ -16,8 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware' => 'cors', 'prefix' => 'api'], function()
-{
+
+Route::group(['middleware' => 'cors'], function(){
     Route::resource('anuncio', 'AnuncioController');
     Route::resource('contratista', 'ContratistaController');
     Route::resource('contrato', 'ContratoController');
@@ -26,3 +26,4 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api'], function()
     Route::resource('tipotrabajo', 'TipoTrabajoController');
 
 });
+Route::options('{any}', ['middleware' => ['cors'], function () { return response(['status' => 'success']); }])->where('any', '.*');
