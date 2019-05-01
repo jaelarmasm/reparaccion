@@ -17,7 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'cors'], function(){
+
+
+Route::group(['middleware' => 'cors'], function(){    
+    Route::resource('userap','UserController');
+    Route::post('loginAPI','UserController@authenticate');
+    Route::get('logoutAPI','UserController@logout');    
+    Route::get('userap','UserController@show');    
+    Route::get('errlogin','UserController@errlogin')->name('errlogin');    
     Route::resource('anuncio', 'AnuncioController');
     Route::resource('contratista', 'ContratistaController');
     Route::resource('contrato', 'ContratoController');
