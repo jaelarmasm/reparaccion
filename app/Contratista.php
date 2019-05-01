@@ -10,7 +10,8 @@ class Contratista extends Model
         'user_id',
         'plan_id',
         'descripcion',
-        'ultima_ubicacion'
+        'ultima_ubicacion',
+        'estado'
     ];
     
     public function anuncios()

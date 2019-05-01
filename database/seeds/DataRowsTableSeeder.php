@@ -699,6 +699,21 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 4,
             ])->save();
         }
+
+        $dataRow = $this->dataRow($contratistaDataType, 'estado');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Estado',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'order'        => 5,
+            ])->save();
+        }
         
         $dataRow = $this->dataRow($contratistaDataType, 'contratista_belongstomany_tipotrabajo_relationship');
         if (!$dataRow->exists) {
@@ -722,7 +737,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => '1',
                     'taggable'    => 'on',
                 ],
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
 
@@ -737,7 +752,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
 
@@ -752,7 +767,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
 
@@ -767,7 +782,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
 
