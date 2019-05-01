@@ -19,6 +19,7 @@ class CreateContratistasTable extends Migration
             $table->bigInteger('plan_id')->unsigned();
             $table->text('descripcion');            
             $table->string('ultima_ubicacion')->nullable();            
+            $table->string('estado')->nullable();            
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('plan_id')->references('id')->on('plans');

@@ -1,2 +1,4 @@
-Este es un archivo para mantener el directorio por defecto de almacenamiento;
-En caso de que algo vaya mal, los archivos multimedia se almacenarán aqui.
+Este es un archivo para mantener el enlace simbólico de almacenamiento, para evitar problemas con la carga de archivos multimedia.
+En caso de que algo vaya mal, los archivos multimedia se deberían almacenar en /public.
+En caso de un error o una alerta, se recomienda ejecutar el siguiente comando:
+>   php artisan storage:link

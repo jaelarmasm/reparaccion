@@ -20,7 +20,7 @@ class CreateAnunciosTable extends Migration
             $table->string('titulo');
             $table->string('imagen');
             $table->text('descripcion');
-            $table->boolean('aprovado')->default(false);
+            $table->boolean('aprobado')->default(false);
             $table->integer('clicks')->nullable();
             $table->timestamps();
             $table->foreign('contratista_id')->references('id')->on('contratistas');

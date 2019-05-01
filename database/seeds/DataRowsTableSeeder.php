@@ -1120,11 +1120,11 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
         
-        $dataRow = $this->dataRow($anuncioDataType, 'aprovado');
+        $dataRow = $this->dataRow($anuncioDataType, 'aprobado');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'checkbox',
-                'display_name' => 'Aprovado',
+                'display_name' => 'Aprobado',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,

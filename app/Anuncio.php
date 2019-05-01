@@ -13,7 +13,7 @@ class Anuncio extends Model
             'titulo',
             'imagen',
             'descripcion',
-            'aprovado',
+            'aprobado',
             'clicks'
     ];
 
