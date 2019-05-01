@@ -30,3 +30,43 @@
 # En caso de tener la Alerta!: Falta el enlace simbólico de almacenamiento
 1. Verificar que exista la carpeta public, caso contrario crearla.
 2. Ejecutar el siguiente comando: `php artisan storage:link`
+
+RUTAS LOGIN:
+ejemplo login:
+POST reparaccion.test/api/loginAPI
+body: 	
+    {   "email":"bm@hotmail.com",
+        "password":"123"
+    }
+
+ejemplo logout
+POST reparaccion.test/api/logoutAPI
+ejemplo registro básico:
+POST reparaccion.test/api/userap
+body:{
+	"name":"byronTest",
+	"email":"bm@hotmail.com",
+	"password":"123",
+	"username":"bmr"
+}
+
+ejemplo editar básico:
+PUT reparaccion.test/api/userap
+body:{
+	"name":"byronTest",
+	"email":"bm@hotmail.com",
+	"password":"123",
+	"username":"bmr"
+}
+
+
+
+
+ejemplo: Obtener Usuario:
+GET reparaccion.test/api/userap?api_token=vILqGLoiPS30jrUel781l2LTXHHP72ZbySTYWJpGjAmm9SAAr5hPDX5Kd9uj
+
+
+
+
+
+
