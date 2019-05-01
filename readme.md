@@ -1,4 +1,4 @@
-# Instrucciones de instalación
+## Instrucciones de instalación
 1. Tener instalado Laragon o las herramientas necesarias para ejecutar un proyecto en Laravel 5.8.
 2. Crear una base de datos, de preferencia con el mismo nombre del proyecto.
 3. Configurar, los siguientes parámetros, en el archivo .env:
@@ -14,7 +14,7 @@
     *username: admin*
     *password: admin*
 
-# Cada vez que se sincroniza el proyecto con github
+## Cada vez que se sincroniza el proyecto con github
 1. Configurar, los siguientes parámetros, en el archivo .env
     - Url en la que se ejecuta la aplicación *APP_URL*
     - Nombre de la base de datos *DB_DATABASE*
@@ -27,46 +27,34 @@
     *username: admin*
     *password: admin*
 
-# En caso de tener la Alerta!: Falta el enlace simbólico de almacenamiento
+## En caso de tener la Alerta!: Falta el enlace simbólico de almacenamiento
 1. Verificar que exista la carpeta public, caso contrario crearla.
 2. Ejecutar el siguiente comando: `php artisan storage:link`
 
-RUTAS LOGIN:
-ejemplo login:
-POST reparaccion.test/api/loginAPI
-body: 	
-    {   "email":"bm@hotmail.com",
-        "password":"123"
-    }
+## Ejemplos para usar las rutas
 
-ejemplo logout
-POST reparaccion.test/api/logoutAPI
-ejemplo registro básico:
-POST reparaccion.test/api/userap
-body:{
-	"name":"byronTest",
-	"email":"bm@hotmail.com",
-	"password":"123",
-	"username":"bmr"
+**login:** POST reparaccion.test/api/loginAPI  
+body: {  
+"email":"bm@hotmail.com",  
+"password":"123"  
 }
 
-ejemplo editar básico:
-PUT reparaccion.test/api/userap
-body:{
-	"name":"byronTest",
-	"email":"bm@hotmail.com",
-	"password":"123",
-	"username":"bmr"
+**logout:** reparaccion.test/api/logoutAPI
+
+**registrar:** POST reparaccion.test/api/userap  
+body: {  
+"name":"byronTest",  
+"email":"bm@hotmail.com",  
+"password":"123",  
+"username":"bmr"  
 }
 
+**editar:** PUT reparaccion.test/api/userap  
+body: {  
+"name":"byronTest",  
+"email":"bm@hotmail.com",  
+"password":"123",  
+"username":"bmr"  
+}
 
-
-
-ejemplo: Obtener Usuario:
-GET reparaccion.test/api/userap?api_token=vILqGLoiPS30jrUel781l2LTXHHP72ZbySTYWJpGjAmm9SAAr5hPDX5Kd9uj
-
-
-
-
-
-
+**obtener:** GET reparaccion.test/api/userap?api_token=vILqGLoiPS30jrUel781l2LTXHHP72ZbySTYWJpGjAmm9SAAr5hPDX5Kd9uj
