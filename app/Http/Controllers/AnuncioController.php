@@ -39,11 +39,10 @@ class AnuncioController extends Controller
      * @param  \App\anuncio  $anuncio
      * @return \Illuminate\Http\Response
      */
-    public function show(anuncio $anuncio)
+    public function show($id)
     {
-        $anuncio = Anuncio::create($anuncio);
-        $res = $anuncio->save();
-        return response()->json($res, 200);
+        $anuncio = Anuncio::find($id);        
+        return response()->json($anuncio, 200);
     }
 
     /**

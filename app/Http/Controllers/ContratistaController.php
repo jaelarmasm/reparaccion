@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contratista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ContratistaController extends Controller
 {
@@ -37,11 +39,10 @@ class ContratistaController extends Controller
      * @param  \App\Contratista  $contratista
      * @return \Illuminate\Http\Response
      */
-    public function show(Contratista $contratista)
+    public function show($id)
     {
-        $contratista = Contratista::create($contratista);
-        $res = $contratista->save();
-        return response()->json($res, 200);
+        $contratista = Contratista::find($id);        
+        return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
     }
 
     /**
@@ -67,5 +68,31 @@ class ContratistaController extends Controller
     {
         $contratista = Contratista::destroy($contratista);
         return response()->json($contratista, 200);
+    }
+
+    public function addTrabajo(Request $request)
+    {
+        $contratista = Contratista::find($request->input('contratista_id'));        
+        if($contratista!=null)
+        {        
+            $contratista->tipotrabajos()->attach($request->input('tipotrabajo_id'));
+            $contratista->save();
+            return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
+        }else{
+            return response()->json("Not found", 404);
+        }
+    }
+
+    public function removeTrabajo(Request $request)
+    {        
+        $contratista = Contratista::find($request->input('contratista_id'));        
+        if($contratista!=null)
+        {
+            $contratista->tipotrabajos()->detach($request->input('tipotrabajo_id'));
+            $contratista->save();
+            return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
+        }else{
+            return response()->json("Not found", 404);
+        }
     }
 }

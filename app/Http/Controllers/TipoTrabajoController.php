@@ -37,11 +37,10 @@ class TipoTrabajoController extends Controller
      * @param  \App\TipoTrabajo  $tipoTrabajo
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoTrabajo $tipoTrabajo)
+    public function show($id)
     {
-        $tipoTrabajo = TipoTrabajo::create($tipoTrabajo);
-        $res = $tipoTrabajo->save();
-        return response()->json($res, 200);
+        $tipoTrabajo = TipoTrabajo::find($id);        
+        return response()->json($tipoTrabajo, 200);
     }
 
     /**

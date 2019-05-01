@@ -37,11 +37,10 @@ class ContratoController extends Controller
      * @param  \App\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrato $contrato)
+    public function show($id)
     {
-        $contrato = Contrato::create($contrato);
-        $res = $contrato->save();
-        return response()->json($res, 200);
+        $contrato = Contrato::find($id);        
+        return response()->json($contrato, 200);
     }
 
     /**

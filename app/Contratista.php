@@ -26,7 +26,7 @@ class Contratista extends Model
 
     public function tipotrabajos()
     {
-        return $this->belongsToMany(TipoTrabajo::class,'contratista_tipotrabajo');
+        return $this->belongsToMany(TipoTrabajo::class,'contratista_tipocontratistas');
     }
     public function user()
     {

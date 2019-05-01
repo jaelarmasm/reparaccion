@@ -37,11 +37,10 @@ class EstadoController extends Controller
      * @param  \App\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function show(Estado $estado)
+    public function show($id)
     {
-        $estado = Estado::create($estado);
-        $res = $estado->save();
-        return response()->json($res, 200);
+        $estado = Estado::find($id);        
+        return response()->json($estado, 200);
     }
 
     /**

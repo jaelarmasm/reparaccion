@@ -37,11 +37,10 @@ class PlanController extends Controller
      * @param  \App\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show($id)
     {
-        $plan = Plan::create($plan);
-        $res = $plan->save();
-        return response()->json($res, 200);
+        $plan = Plan::find($id);        
+        return response()->json($plan, 200);
     }
 
     /**
