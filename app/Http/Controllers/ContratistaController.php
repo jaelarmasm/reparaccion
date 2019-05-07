@@ -29,8 +29,8 @@ class ContratistaController extends Controller
     public function store(Request $request)
     {
         $contratista = Contratista::create($request->all());
-        $res = $contratista->save();
-        return response()->json($res, 200);
+        // $res = $contratista->save();
+        return response()->json($contratista, 200);
     }
 
     /**
