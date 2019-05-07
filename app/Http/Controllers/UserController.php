@@ -78,8 +78,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        //
-        return auth()->user();
+        return ["user"=>auth()->user(),"contratista"=>auth()->user()->contratistas,"trabajos"=>auth()->user()->contratistas()->tipotrabajos];
     }
 
     /**
