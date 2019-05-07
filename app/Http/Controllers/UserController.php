@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use TCG\Voyager\Models\Role;
 use Illuminate\Support\Facades\Session;
+use App\Contratista;
 
 class UserController extends Controller
 {
@@ -78,7 +79,8 @@ class UserController extends Controller
      */
     public function show()
     {
-        return ["user"=>auth()->user(),"contratista"=>auth()->user()->contratistas,"trabajos"=>auth()->user()->contratistas()->tipotrabajos];
+         $contratista =Contratista::find(auth()->user()->contratistas()->first());
+         return ["user"=>auth()->user(),"contratista"=>auth()->user()->contratistas,"trabajos"=>$contratista != null ? $contratista->tipotrabajos : null];        
     }
 
     /**
