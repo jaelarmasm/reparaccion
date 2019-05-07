@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use TCG\Voyager\Models\Role;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -102,7 +103,8 @@ class UserController extends Controller
         $user->telefono=$request->input('telefono');
         $user->direccion=$request->input('direccion');
         $user->ubicacion=$request->input('ubicacion');        
-        return $user->save();
+        $user->save();
+        return $user;
     }
 
     /**
@@ -118,7 +120,9 @@ class UserController extends Controller
 
     public function logout()
     {
-        return Auth::logout();
+        Session::flush(); 
+        Auth::guard("web")->logout();
+        return ['response'=>'ok'];
     }
 
     public function errlogin()

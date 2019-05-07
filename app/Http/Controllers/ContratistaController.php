@@ -75,8 +75,7 @@ class ContratistaController extends Controller
         $contratista = Contratista::find($request->input('contratista_id'));        
         if($contratista!=null)
         {        
-            $contratista->tipotrabajos()->attach($request->input('tipotrabajo_id'));
-            $contratista->save();
+            $contratista->tipotrabajos()->attach($request->input('tipotrabajo_id'));            
             return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
         }else{
             return response()->json("Not found", 404);
@@ -88,8 +87,7 @@ class ContratistaController extends Controller
         $contratista = Contratista::find($request->input('contratista_id'));        
         if($contratista!=null)
         {
-            $contratista->tipotrabajos()->detach($request->input('tipotrabajo_id'));
-            $contratista->save();
+            $contratista->tipotrabajos()->detach($request->input('tipotrabajo_id'));            
             return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
         }else{
             return response()->json("Not found", 404);
