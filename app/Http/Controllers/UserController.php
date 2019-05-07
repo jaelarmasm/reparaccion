@@ -121,7 +121,11 @@ class UserController extends Controller
     public function logout()
     {
         Session::flush(); 
-        Auth::guard("web")->logout();
+        $user=Auth::user();
+        $user->api_token=null;
+        $user->save();
+
+        Auth::guard("web")->logout();        
         return ['response'=>'ok'];
     }
 
