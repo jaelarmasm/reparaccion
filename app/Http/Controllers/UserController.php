@@ -48,6 +48,8 @@ class UserController extends Controller
             ])->save();
             return auth()->user();
         }
+        return [
+            'failed' => 'No user register or no password match'];
     }
 
     /**
@@ -78,9 +80,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    {
-         $contratista =Contratista::find(auth()->user()->contratistas()->first());
-         return ["user"=>auth()->user(),"contratista"=>auth()->user()->contratistas,"trabajos"=>$contratista != null ? $contratista->tipotrabajos : null];        
+    {    
+         $contratista =Contratista::find(auth()->user()->contratistas);
+        //  dd($contratista[0]);
+         return ["user"=>auth()->user(),"contratista"=>auth()->user()->contratistas,"trabajos"=>$contratista[0] != null ? $contratista[0]->tipotrabajos : null];        
     }
 
     /**
