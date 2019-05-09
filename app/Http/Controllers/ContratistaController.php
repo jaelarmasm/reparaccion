@@ -54,8 +54,13 @@ class ContratistaController extends Controller
      */
     public function update(Request $request, Contratista $contratista)
     {
-        $contratista = Contratista::firstOrCreate($request->all());
-        return response()->json($contratista, 200);
+        $contratista = Contratista::find($request->input("id"));
+        if($contratista)
+        {
+            $contratista->update($request>all());
+            return response()->json($contratista, 200);
+        }
+        return response()->json("Not found", 404);
     }
 
     /**
