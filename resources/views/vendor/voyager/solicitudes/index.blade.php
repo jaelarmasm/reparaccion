@@ -1,6 +1,5 @@
-<?php
-use \Carbon\Carbon;
-?>
+
+{{-- {{dd($solicitudes)}} --}}
 
 @extends('voyager::master') 
 @section('page_title', 'Solicitudes') 
@@ -86,43 +85,32 @@ use \Carbon\Carbon;
                                                 <th aria-label="Nombre">
                                                     Nombre
                                                 </th>
-                                                <th aria-label="Apellido">
-                                                    Apellido
-                                                </th>
-                                                <th aria-label="Teléfono">
-                                                    Teléfono
+                                                <th aria-label="Username">
+                                                    Username
                                                 </th>
                                                 <th aria-label="Email">
                                                     Email
                                                 </th>
-                                                <th aria-label="Mac">
-                                                    Mac
-                                                </th>
-                                                <th aria-label="Fecha de acceso">
-                                                    Fecha de acceso
+                                                <th aria-label="Teléfono">
+                                                    Teléfono
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $item)
+                                            @foreach ($solicitudes as $item)
                                             <tr role="row">
+                                                {{-- {{dd($item->contratistas)}} --}}
                                                 <td>
                                                     <div>{{ $item->name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $item->lastname }}</div>
-                                                </td>
-                                                <td>
-                                                    <div>{{ $item->phone }}</div>
+                                                    <div>{{ $item->username }}</div>
                                                 </td>
                                                 <td>
                                                     <div>{{ $item->email }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $item->mac }}</div>
-                                                </td>
-                                                <td>
-                                                    <div>{{ $item->created_at }}</div>
+                                                    <div>{{ $item->telefono }}</div>
                                                 </td>
                                             </tr>
                                             @endforeach

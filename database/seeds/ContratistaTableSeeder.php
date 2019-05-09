@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Contratista;
+use App\User;
 
 class ContratistaTableSeeder extends Seeder
 {
@@ -12,10 +13,10 @@ class ContratistaTableSeeder extends Seeder
      */
     public function run()
     {
+        $role = TCG\Voyager\Models\Role::where('name', 'contratista')->firstOrFail();
         foreach (range(1,3) as $index) {
-            $role = TCG\Voyager\Models\Role::where('name', 'contratista')->firstOrFail();
 
-            $user = factory(App\User::class)->create([
+            $user = factory(User::class)->create([
                 'username' => 'contra'.$index,
                 'password' => bcrypt('contra'.$index),
                 'role_id' => $role->id

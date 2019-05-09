@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use TCG\Voyager\Models\Role;
 use App\User;
+use App\Contratista;
 
 class UsersTableSeeder extends Seeder
 {
@@ -35,10 +36,16 @@ class UsersTableSeeder extends Seeder
                     
             $role = Role::where('name', 'solicitante')->firstOrFail();
             foreach (range(1,3) as $index) {
-                factory(User::class)->create([
+                $user = factory(User::class)->create([
                     'username' => 'soli'.$index,
                     'password' => bcrypt('soli'.$index),
-                ])->roles()->attach($role);
+                ]);
+                
+                // factory(Contratista::class)->create([
+                //     'user_id' => $user->id,
+                // ]);
+
+                $user->roles()->attach($role);
             }
 
             // factory(User::class)->create([

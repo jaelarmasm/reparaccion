@@ -20,7 +20,6 @@ $factory->define(Contratista::class, function (Faker $faker) {
     return [
         'user_id' => 1, //admin
         'plan_id' => rand(1, 4),
-        // 'descripcion' => realText($maxNbChars = 200, $indexSize = 2),
         'descripcion' => $faker->text,
         'ultima_ubicacion' => $faker->latitude.','.$faker->longitude,
     ];
