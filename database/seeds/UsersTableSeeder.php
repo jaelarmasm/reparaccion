@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use TCG\Voyager\Models\Role;
-use TCG\Voyager\Models\User;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -26,21 +26,28 @@ class UsersTableSeeder extends Seeder
                 'role_id'        => $role->id,
             ]);
 
-            factory(User::class)->create([
-                'name'           => 'Cliente Uno',
-                'username'       => 'user',
-                'email'          => 'user@email.com',
-                'password'       => bcrypt('user'),
-            ]);
-            
-            $role = Role::where('name', 'contratista')->firstOrFail();
-            factory(User::class)->create([
-                'name'           => 'Contratista Uno',
-                'username'       => 'contra',
-                'email'          => 'contra@email.com',
-                'password'       => bcrypt('contra'),
-                'role_id'        => $role->id,
-            ]);
+            foreach (range(1,5) as $index) {
+                factory(User::class)->create([
+                    'username' => 'user'.$index,
+                    'password' => bcrypt('user'.$index)
+                ]);
+            }
+
+            // factory(User::class)->create([
+            //     'name'           => 'Cliente Uno',
+            //     'username'       => 'user',
+            //     'email'          => 'user@email.com',
+            //     'password'       => bcrypt('user'),
+            // ]);
+
+            // $role = Role::where('name', 'contratista')->firstOrFail();
+            // factory(User::class)->create([
+            //     'name'           => 'Contratista Uno',
+            //     'username'       => 'contra',
+            //     'email'          => 'contra@email.com',
+            //     'password'       => bcrypt('contra'),
+            //     'role_id'        => $role->id,
+            // ]);
         }
     }
 }
