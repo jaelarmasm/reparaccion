@@ -19,4 +19,5 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::post('login', ['uses' => 'AdminController@postLogin', 'as' => 'postlogin']);
+    Route::get('solicitudes', ['uses' => 'SolicitudController@index', 'as' => 'voyager.solicitudes.index']);
 });

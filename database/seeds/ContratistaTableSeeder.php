@@ -12,19 +12,18 @@ class ContratistaTableSeeder extends Seeder
      */
     public function run()
     {
-        // foreach (range(1,5) as $index) {
+        foreach (range(1,3) as $index) {
+            $role = TCG\Voyager\Models\Role::where('name', 'contratista')->firstOrFail();
 
-        //     $user = factory(User::class)->create([
-        //         'username' => 'contra'.$index,
-        //         'password' => bcrypt('contra'.$index)
-        //     ]);
+            $user = factory(App\User::class)->create([
+                'username' => 'contra'.$index,
+                'password' => bcrypt('contra'.$index),
+                'role_id' => $role->id
+            ]);
 
-        //     Contratista::create([
-        //         'user_id' => $user->id,
-        //         'plan_id' => rand(1, 4),
-        //         'descripcion' => 'Instalaciones eléctricas de mediana y baja tensión, instalación de alarmas, cámaras de video',
-        //     ]);
-
-        // }
+            factory(Contratista::class)->create([
+                'user_id' => $user->id,
+            ]);
+        }
     }
 }

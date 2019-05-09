@@ -25,12 +25,20 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(60),
                 'role_id'        => $role->id,
             ]);
-
-            foreach (range(1,5) as $index) {
+                
+            foreach (range(1,3) as $index) {
                 factory(User::class)->create([
                     'username' => 'user'.$index,
                     'password' => bcrypt('user'.$index)
                 ]);
+            }
+                    
+            $role = Role::where('name', 'solicitante')->firstOrFail();
+            foreach (range(1,3) as $index) {
+                factory(User::class)->create([
+                    'username' => 'soli'.$index,
+                    'password' => bcrypt('soli'.$index),
+                ])->roles()->attach($role);
             }
 
             // factory(User::class)->create([
