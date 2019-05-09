@@ -57,7 +57,7 @@ class ContratistaController extends Controller
         $contratista = Contratista::find($request->input("id"));
         if($contratista)
         {
-            $contratista->update($request>all());
+            $contratista->update($request->all());
             return response()->json($contratista, 200);
         }
         return response()->json("Not found", 404);
