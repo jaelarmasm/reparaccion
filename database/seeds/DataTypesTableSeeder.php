@@ -143,21 +143,6 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
-
-        // // solicitudes
-        // $dataType = $this->dataType('slug', 'solicitudes');
-        // if (!$dataType->exists) {
-        //     $dataType->fill([
-        //         'name'                  => 'solicitudes',
-        //         'display_name_singular' => 'Solicitud',
-        //         'display_name_plural'   => 'Solicitudes',
-        //         'icon'                  => 'voyager-megaphone',
-        //         'model_name'            => '',
-        //         'controller'            => '',
-        //         'generate_permissions'  => 1,
-        //         'description'           => '',
-        //     ])->save();
-        // }
     }
 
     /**

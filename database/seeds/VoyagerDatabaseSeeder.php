@@ -24,11 +24,11 @@ class VoyagerDatabaseSeeder extends Seeder
         $this->seed('PermissionsTableSeeder');
         $this->seed('PermissionRoleTableSeeder');
         $this->seed('SettingsTableSeeder');
-        $this->seed('UsersTableSeeder');
         $this->seed('PlanTableSeeder');
-        $this->seed('EstadoTableSeeder');
         $this->seed('TipoTrabajoTableSeeder');
+        $this->seed('UsersTableSeeder');
         $this->seed('ContratistaTableSeeder');
+        $this->seed('EstadoTableSeeder');
         $this->seed('ContratoTableSeeder');
     }
 }

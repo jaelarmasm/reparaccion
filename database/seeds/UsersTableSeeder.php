@@ -41,9 +41,10 @@ class UsersTableSeeder extends Seeder
                     'password' => bcrypt('soli'.$index),
                 ]);
                 
-                // factory(Contratista::class)->create([
-                //     'user_id' => $user->id,
-                // ]);
+                factory(Contratista::class)->create([
+                    'user_id' => $user->id,
+                    'estado' => 'solicitante'
+                ]);
 
                 $user->roles()->attach($role);
             }

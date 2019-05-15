@@ -94,12 +94,21 @@
                                                 <th aria-label="Teléfono">
                                                     Teléfono
                                                 </th>
+                                                <th aria-label="Plan">
+                                                    Plan
+                                                </th>
+                                                <th aria-label="Descripción">
+                                                    Descripción
+                                                </th>
+                                                <th aria-label="Accions">
+                                                    Acciones
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($solicitudes as $item)
                                             <tr role="row">
-                                                {{-- {{dd($item->contratistas)}} --}}
+                                                {{-- {{dd($item->contratistas[0])}} --}}
                                                 <td>
                                                     <div>{{ $item->name }}</div>
                                                 </td>
@@ -111,6 +120,23 @@
                                                 </td>
                                                 <td>
                                                     <div>{{ $item->telefono }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $item->contratistas[0]->plan->titulo }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $item->contratistas[0]->descripcion }}</div>
+                                                </td>
+                                                <td>
+                                                    <a href="#" title="Rechazar" class="btn btn-sm btn-danger pull-right" style="margin-right: 5px;">
+                                                        <i class="voyager-x"></i> <span class="hidden-xs hidden-sm"></span>
+                                                    </a>
+                                                    <a href="#" title="Aprobar" class="btn btn-sm btn-success pull-right" style="margin-right: 5px;">
+                                                        <i class="voyager-check"></i> <span class="hidden-xs hidden-sm"></span>
+                                                    </a>
+                                                    <a href="#" title="Ver" class="btn btn-sm btn-warning pull-right" style="margin-right: 5px;">
+                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach
