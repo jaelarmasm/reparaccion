@@ -23,7 +23,11 @@ class SolicitudController extends Controller
             }
         }
 
-        return Voyager::view('voyager::solicitudes.index', compact('solicitudes'));
-
+        return Voyager::view('voyager::solicitudes.browse', compact('solicitudes'));
+    }
+    
+    public function show($id){
+        // dd('Holi', $id);
+        return Voyager::view('voyager::solicitudes.read', compact('id'));
     }
 }

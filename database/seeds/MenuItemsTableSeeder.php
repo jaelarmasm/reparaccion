@@ -282,7 +282,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => 'Solicitudes',
             'url'     => '',
-            'route'   => 'voyager.solicitudes.index',
+            'route'   => 'voyager.solicitudes.browse',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([

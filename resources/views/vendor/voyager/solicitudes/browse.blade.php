@@ -1,6 +1,4 @@
 
-{{-- {{dd($solicitudes)}} --}}
-
 @extends('voyager::master') 
 @section('page_title', 'Solicitudes') 
 @section('page_header')
@@ -106,7 +104,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($solicitudes as $item)
+                                            @foreach ($solicitudes as $key => $item)
                                             <tr role="row">
                                                 {{-- {{dd($item->contratistas[0])}} --}}
                                                 <td>
@@ -127,14 +125,14 @@
                                                 <td>
                                                     <div>{{ $item->contratistas[0]->descripcion }}</div>
                                                 </td>
-                                                <td>
-                                                    <a href="#" title="Rechazar" class="btn btn-sm btn-danger pull-right" style="margin-right: 5px;">
-                                                        <i class="voyager-x"></i> <span class="hidden-xs hidden-sm"></span>
-                                                    </a>
+                                                <td class="bet">
                                                     <a href="#" title="Aprobar" class="btn btn-sm btn-success pull-right" style="margin-right: 5px;">
                                                         <i class="voyager-check"></i> <span class="hidden-xs hidden-sm"></span>
                                                     </a>
-                                                    <a href="#" title="Ver" class="btn btn-sm btn-warning pull-right" style="margin-right: 5px;">
+                                                    <a href="#" title="Rechazar" class="btn btn-sm btn-danger pull-right" style="margin-right: 5px;">
+                                                        <i class="voyager-x"></i> <span class="hidden-xs hidden-sm"></span>
+                                                    </a>
+                                                    <a href="{{ route('voyager.solicitudes.read', $item->id) }}" title="Ver" class="btn btn-sm btn-warning pull-right" style="margin-right: 5px;">
                                                         <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                     </a>
                                                 </td>
@@ -155,25 +153,5 @@
 @stop 
 
 @section('javascript') 
-
-    <script>
-
-        document.actions.exportbtn.onclick = function(){
-            document.actions.action = '/export';
-            document.actions.submit();
-        };
-        
-        document.actions.filterbtn.onclick = function(){
-            document.actions.action = '/admin';
-            document.actions.submit();
-        };
-
-        document.actions.table.onchange = function(){
-            document.actions.action = '/admin';
-            document.actions.submit();
-        };
-
-
-    </script>
 
 @stop
