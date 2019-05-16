@@ -276,5 +276,22 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 5,
             ])->save();
         }
+
+        // solicitudes
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Solicitudes',
+            'url'     => '',
+            'route'   => 'voyager.solicitudes.browse',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-check',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 6,
+            ])->save();
+        }
     }
 }

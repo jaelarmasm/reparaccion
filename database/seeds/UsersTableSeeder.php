@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use TCG\Voyager\Models\Role;
-use TCG\Voyager\Models\User;
+use App\User;
+use App\Contratista;
 
 class UsersTableSeeder extends Seeder
 {
@@ -25,22 +26,28 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(60),
                 'role_id'        => $role->id,
             ]);
+                
+            foreach (range(1,3) as $index) {
+                factory(User::class)->create([
+                    'username' => 'user'.$index,
+                    'password' => bcrypt('user'.$index)
+                ]);
+            }
+                    
+            $role = Role::where('name', 'solicitante')->firstOrFail();
+            foreach (range(1,3) as $index) {
+                $user = factory(User::class)->create([
+                    'username' => 'soli'.$index,
+                    'password' => bcrypt('soli'.$index),
+                ]);
+                
+                factory(Contratista::class)->create([
+                    'user_id' => $user->id,
+                    'estado' => Contratista::estados()[2] //solicitante
+                ]);
 
-            factory(User::class)->create([
-                'name'           => 'Cliente Uno',
-                'username'       => 'user',
-                'email'          => 'user@email.com',
-                'password'       => bcrypt('user'),
-            ]);
-            
-            $role = Role::where('name', 'contratista')->firstOrFail();
-            factory(User::class)->create([
-                'name'           => 'Contratista Uno',
-                'username'       => 'contra',
-                'email'          => 'contra@email.com',
-                'password'       => bcrypt('contra'),
-                'role_id'        => $role->id,
-            ]);
+                $user->roles()->attach($role);
+            }
         }
     }
 }

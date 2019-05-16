@@ -24,17 +24,17 @@ class RolesTableSeeder extends Seeder
             ])->save();
         }
 
-        $role = Role::firstOrNew(['name' => 'solicitante']);
-        if (!$role->exists) {
-            $role->fill([
-                'display_name' => 'Solicitante',
-            ])->save();
-        }
-
         $role = Role::firstOrNew(['name' => 'contratista']);
         if (!$role->exists) {
             $role->fill([
                 'display_name' => 'Contratista',
+            ])->save();
+        }
+
+        $role = Role::firstOrNew(['name' => 'solicitante']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => 'Solicitante',
             ])->save();
         }
     }

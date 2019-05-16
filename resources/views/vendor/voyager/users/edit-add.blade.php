@@ -58,6 +58,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="telefono">{{ __('Teléfono') }}</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="{{ __('Teléfono') }}"
+                                       value="{{ $dataTypeContent->telefono ?? '' }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="direccion">{{ __('Dirección') }}</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="{{ __('Dirección') }}"
+                                       value="{{ $dataTypeContent->direccion ?? '' }}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="password">{{ __('voyager::generic.password') }}</label>
                                 @if(isset($dataTypeContent->password))
                                     <br>

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Contratista;
+use App\User;
 
 class ContratistaTableSeeder extends Seeder
 {
@@ -12,10 +13,18 @@ class ContratistaTableSeeder extends Seeder
      */
     public function run()
     {
-        Contratista::create([
-            'user_id' => 3,
-            'plan_id' => 3,
-            'descripcion' => 'Instalaciones eléctricas de mediana y baja tensión, instalación de alarmas, cámaras de video',
-        ]);
+        $role = TCG\Voyager\Models\Role::where('name', 'contratista')->firstOrFail();
+        foreach (range(1,3) as $index) {
+
+            $user = factory(User::class)->create([
+                'username' => 'contra'.$index,
+                'password' => bcrypt('contra'.$index),
+                'role_id' => $role->id
+            ]);
+
+            factory(Contratista::class)->create([
+                'user_id' => $user->id,
+            ]);
+        }
     }
 }
