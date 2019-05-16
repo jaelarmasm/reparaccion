@@ -43,27 +43,11 @@ class UsersTableSeeder extends Seeder
                 
                 factory(Contratista::class)->create([
                     'user_id' => $user->id,
-                    'estado' => 'solicitante'
+                    'estado' => Contratista::estados()[2] //solicitante
                 ]);
 
                 $user->roles()->attach($role);
             }
-
-            // factory(User::class)->create([
-            //     'name'           => 'Cliente Uno',
-            //     'username'       => 'user',
-            //     'email'          => 'user@email.com',
-            //     'password'       => bcrypt('user'),
-            // ]);
-
-            // $role = Role::where('name', 'contratista')->firstOrFail();
-            // factory(User::class)->create([
-            //     'name'           => 'Contratista Uno',
-            //     'username'       => 'contra',
-            //     'email'          => 'contra@email.com',
-            //     'password'       => bcrypt('contra'),
-            //     'role_id'        => $role->id,
-            // ]);
         }
     }
 }

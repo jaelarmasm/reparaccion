@@ -17,17 +17,45 @@ class SolicitudController extends Controller
 
         $solicitudes = [];
         
-        foreach ($users as $key => $user) {
+        foreach ($users as $user) {
             if(!$user->roles->isEmpty()){
-                array_push($solicitudes, $user);
+                foreach ($user->roles as $role){
+                    if ($role->name == 'solicitante'){
+                        array_push($solicitudes, [
+                            'user' => $user, 
+                            'contratista' => $user->contratistas[0]
+                        ]);
+                    }
+                }
             }
         }
 
         return Voyager::view('voyager::solicitudes.browse', compact('solicitudes'));
+
     }
     
-    public function show($id){
-        // dd('Holi', $id);
-        return Voyager::view('voyager::solicitudes.read', compact('id'));
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        $solicitud = [];
+
+        if(!$user->roles->isEmpty()){
+            $roles = $user->roles;
+            foreach ($roles as $role){
+                if ($role->name == 'solicitante'){
+                    $solicitud = [
+                        'user' => $user,
+                        'contratista' => $user->contratistas[0],
+                        'roles' => $roles
+                    ];
+                }
+            }
+        } else {
+            return redirect()->back();
+        }
+
+        return Voyager::view('voyager::solicitudes.read', compact('solicitud'));
+
     }
 }

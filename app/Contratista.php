@@ -36,5 +36,20 @@ class Contratista extends Model
     {
         return $this->belongsTo(Plan::class);
     }
-    
+
+    // $contratista->estados()
+    public static function estados(){
+        return [
+            'aprobado',     //[0] 
+            'suspendido',   //[1]
+            'solicitante'   //[2]
+        ];
+    }
+
+    // $contratista->strestado
+    public function getStrestadoAttribute(){
+        if (in_array($this->estado, $this->estados())) {
+            return $this->estado;
+        }
+    }
 }
