@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
                 
                 factory(Contratista::class)->create([
                     'user_id' => $user->id,
-                    'estado' => Contratista::estados()[2] //solicitante
+                    'estado' => Contratista::estados()['solicitante']
                 ]);
 
                 $user->roles()->attach($role);

@@ -38,11 +38,12 @@ class Contratista extends Model
     }
 
     // $contratista->estados()
+    // Representacion necesaria para aprovechar el fieldform-dropdown de Voyager
     public static function estados(){
         return [
-            'aprobado',     //[0] 
-            'suspendido',   //[1]
-            'solicitante'   //[2]
+            'aprobado' => 'aprobado',
+            'suspendido' => 'suspendido',
+            'solicitante' => 'solicitante'
         ];
     }
 
