@@ -55,7 +55,7 @@ class Contratista extends Model
 
     // $contratista->isAprobado
     public function getIsAprobadoAttribute() {
-        if ($this->user->role->name == 'contratista' || $this->estado == 'aprobado'){
+        if ($this->user->role->name == 'contratista' && $this->estado == 'aprobado'){
             return true;
         }
         return false;
