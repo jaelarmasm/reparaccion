@@ -3,15 +3,26 @@
 @section('page_title', 'Ver Solicitud') 
 
 @section('page_header')
-    <h1 class="page-title">
+    <style>
+        .bet {
+            display: flex;
+        }
+    </style>
+    <h1 class="page-title bet">
         <i class="voyager-check"></i> Viendo Solicitud &nbsp;
         
-        <a href="#" title="Aprobar" class="btn btn-sm btn-success" style="left: 0; top: 0; ">
-            <i class="voyager-check"></i> <span class="hidden-xs hidden-xs">Aprobar</span>
-        </a>
-        <a href="#" title="Rechazar" class="btn btn-sm btn-danger">
-            <i class="voyager-x"></i> <span class="hidden-xs hidden-xs">Rechazar</span>
-        </a>
+        <form action="{{ route('solicitudes.aprobar', $solicitud['user']->id) }}" method="POST">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-sm btn-success" style="left: 0; top: 0; margin: 0 10px;">
+                <i class="voyager-check"></i> <span class="hidden-xs hidden-xs">Aprobar</span>
+            </button>
+        </form>
+        <form action="{{ route('solicitudes.rechazar', $solicitud['user']->id) }}" method="POST">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-sm btn-danger">
+                <i class="voyager-x"></i> <span class="hidden-xs hidden-xs">Rechazar</span>
+            </button>
+        </form>
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop

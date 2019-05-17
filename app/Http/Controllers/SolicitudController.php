@@ -46,4 +46,28 @@ class SolicitudController extends Controller
         return Voyager::view('voyager::solicitudes.read', compact('solicitud'));
 
     }
+
+    public function aprobar($id)
+    {
+        $user = User::find($id);
+
+        if($user->isSolicitante){
+            $user->contratistas[0]->estado = 'aprobado';
+            $user->contratistas[0]->save();
+        }
+
+        return  redirect()->route('voyager.solicitudes.browse');
+    }
+    
+    public function rechazar($id)
+    {
+        $user = User::find($id);
+        
+        if($user->isSolicitante){
+            $user->contratistas[0]->estado = 'rechazado';
+            $user->contratistas[0]->save();
+        }
+        
+        return  redirect()->route('voyager.solicitudes.browse');
+    }
 }

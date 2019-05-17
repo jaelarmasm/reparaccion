@@ -70,12 +70,18 @@
                                                     <div>{{ $solicitud['contratista']->descripcion }}</div>
                                                 </td>
                                                 <td class="bet">
-                                                    <a href="#" title="Aprobar" class="btn btn-sm btn-success pull-right" style="margin-right: 5px;">
-                                                        <i class="voyager-check"></i>
-                                                    </a>
-                                                    <a href="#" title="Rechazar" class="btn btn-sm btn-danger pull-right" style="margin-right: 5px;">
-                                                        <i class="voyager-x"></i>
-                                                    </a>
+                                                    <form action="{{ route('solicitudes.aprobar', $solicitud['user']->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <button type="submit" class="btn btn-sm btn-success">
+                                                            <i class="voyager-check"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form action="{{ route('solicitudes.rechazar', $solicitud['user']->id) }}" method="POST" style="margin: 0 5px;">
+                                                        {{ csrf_field() }}
+                                                        <button type="submit" class="btn btn-sm btn-danger">
+                                                            <i class="voyager-x"></i>
+                                                        </button>
+                                                    </form>
                                                     <a href="{{ route('voyager.solicitudes.read', $solicitud['user']->id) }}" title="Ver" class="btn btn-sm btn-warning pull-right" style="margin-right: 5px;">
                                                         <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                     </a>
