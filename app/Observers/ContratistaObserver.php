@@ -26,14 +26,16 @@ class ContratistaObserver
      */
     public function updated(Contratista $contratista)
     {
+        $user = $contratista->user;
         if ($contratista->estado == 'aprobado'){
             $role = Role::where('name', 'contratista')->firstOrFail();
-        } else {
+            $user->role_id = $role->id;
+            $user->save();
+        } elseif ($contratista->estado == 'rechazado') {
             $role = Role::where('name', 'user')->firstOrFail();
+            $user->role_id = $role->id;
+            $user->save();
         }
-        $user = $contratista->user;
-        $user->role_id = $role->id;
-        $user->save();
     }
 
     /**

@@ -15,6 +15,7 @@ class Contratista extends Model
         'estado'
     ];
 
+    // Evento para actualizar user->role cuando se edita contratista->estado
     protected $contratistasEvents = [
         'updated' => ContratistaUpdated::class
     ];
@@ -42,8 +43,8 @@ class Contratista extends Model
         return $this->belongsTo(Plan::class);
     }
 
-    // $contratista->estados()
     // Representacion requerida para aprovechar el fieldform-dropdown de Voyager
+    // $contratista->estados()
     public static function estados(){
         return [
             'aprobado' => 'aprobado',
