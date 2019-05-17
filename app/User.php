@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use TCG\Voyager\Models\Role;
+use App\Events\UserUpdated;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -26,6 +27,11 @@ class User extends \TCG\Voyager\Models\User
         'direccion',
         'ubicacion',
         'api_token'
+    ];
+
+    // Evento para actualizar contratista->estado cuando se edita user->role 
+    protected $usersEvents = [
+        'updated' => UserUpdated::class
     ];
 
     /**
@@ -64,5 +70,15 @@ class User extends \TCG\Voyager\Models\User
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    // $user->isSolicitante
+    public function getIsSolicitanteAttribute() {
+        if (!$this->contratistas->isEmpty()) {
+            if ($this->contratistas[0]->estado == 'solicitante'){
+                return true;
+            }
+        }
+        return false;
     }
 }

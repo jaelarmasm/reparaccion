@@ -11,22 +11,16 @@ class SolicitudController extends Controller
 {
     public function index()
     {
-        $role = Role::where('name', 'solicitante')->firstOrFail();
-
         $users = User::all();
 
         $solicitudes = [];
-        
+
         foreach ($users as $user) {
-            if(!$user->roles->isEmpty()){
-                foreach ($user->roles as $role){
-                    if ($role->name == 'solicitante'){
-                        array_push($solicitudes, [
-                            'user' => $user, 
-                            'contratista' => $user->contratistas[0]
-                        ]);
-                    }
-                }
+            if($user->isSolicitante){
+                array_push($solicitudes, [
+                    'user' => $user, 
+                    'contratista' => $user->contratistas[0]
+                ]);
             }
         }
 
@@ -40,22 +34,40 @@ class SolicitudController extends Controller
 
         $solicitud = [];
 
-        if(!$user->roles->isEmpty()){
-            $roles = $user->roles;
-            foreach ($roles as $role){
-                if ($role->name == 'solicitante'){
-                    $solicitud = [
-                        'user' => $user,
-                        'contratista' => $user->contratistas[0],
-                        'roles' => $roles
-                    ];
-                }
-            }
+        if( $user->isSolicitante) {
+            $solicitud = [
+                'user' => $user,
+                'contratista' => $user->contratistas[0]
+            ];
         } else {
             return redirect()->back();
         }
 
         return Voyager::view('voyager::solicitudes.read', compact('solicitud'));
 
+    }
+
+    public function aprobar($id)
+    {
+        $user = User::find($id);
+
+        if($user->isSolicitante){
+            $user->contratistas[0]->estado = 'aprobado';
+            $user->contratistas[0]->save();
+        }
+
+        return  redirect()->route('voyager.solicitudes.browse');
+    }
+    
+    public function rechazar($id)
+    {
+        $user = User::find($id);
+        
+        if($user->isSolicitante){
+            $user->contratistas[0]->estado = 'rechazado';
+            $user->contratistas[0]->save();
+        }
+        
+        return  redirect()->route('voyager.solicitudes.browse');
     }
 }

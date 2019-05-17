@@ -26,9 +26,9 @@ class VoyagerDatabaseSeeder extends Seeder
         $this->seed('SettingsTableSeeder');
         $this->seed('PlanTableSeeder');
         $this->seed('TipoTrabajoTableSeeder');
+        $this->seed('EstadoTableSeeder');
         $this->seed('UsersTableSeeder');
         $this->seed('ContratistaTableSeeder');
-        $this->seed('EstadoTableSeeder');
-        $this->seed('ContratoTableSeeder');
+        // $this->seed('ContratoTableSeeder');
     }
 }

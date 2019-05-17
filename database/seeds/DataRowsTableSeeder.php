@@ -733,8 +733,10 @@ class DataRowsTableSeeder extends Seeder
 
         $dataRow = $this->dataRow($contratistaDataType, 'estado');
         if (!$dataRow->exists) {
+            $estados = App\Contratista::estados();
+            unset($estados['solicitante']);
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'select_dropdown',
                 'display_name' => 'Estado',
                 'required'     => 1,
                 'browse'       => 1,
@@ -743,6 +745,11 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 5,
+                'details'      => [
+                    'default' => 'aprobado',
+                    'options' => $estados,
+                ],
+
             ])->save();
         }
         
