@@ -65,4 +65,14 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->belongsTo(Role::class);
     }
+
+    // $user->isSolicitante
+    public function getIsSolicitanteAttribute() {
+        if (!$this->contratistas->isEmpty()) {
+            if ($this->contratistas[0]->estado == 'solicitante'){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -34,7 +34,6 @@ class UsersTableSeeder extends Seeder
                 ]);
             }
                     
-            $role = Role::where('name', 'solicitante')->firstOrFail();
             foreach (range(1,3) as $index) {
                 $user = factory(User::class)->create([
                     'username' => 'soli'.$index,
@@ -46,7 +45,6 @@ class UsersTableSeeder extends Seeder
                     'estado' => Contratista::estados()['solicitante']
                 ]);
 
-                $user->roles()->attach($role);
             }
         }
     }

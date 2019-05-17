@@ -30,12 +30,5 @@ class RolesTableSeeder extends Seeder
                 'display_name' => 'Contratista',
             ])->save();
         }
-
-        $role = Role::firstOrNew(['name' => 'solicitante']);
-        if (!$role->exists) {
-            $role->fill([
-                'display_name' => 'Solicitante',
-            ])->save();
-        }
     }
 }

@@ -128,7 +128,7 @@
                         </div>
                         <div class="panel-body" style="padding-top:0;">
                             <ul>
-                                @foreach ($solicitud['roles'] as $role)
+                                @foreach ($solicitud['user']->roles as $role)
                                     <li>{{ $role->display_name }}</li>
                                 @endforeach
                             </ul>
@@ -140,10 +140,10 @@
                             <h3 class="panel-title">Estado</h3>
                         </div>
                         <div class="panel-body" style="padding-top:0;">
-                            @if ( is_null($solicitud['contratista']->strestado) )
+                            @if ( is_null($solicitud['contratista']->estado) )
                                 <p>No hay resultados</p>
                             @else
-                                <p>{{ $solicitud['contratista']->strestado }}</p>
+                                <p>{{ $solicitud['contratista']->estado }}</p>
                             @endif
                         </div><!-- panel-body -->
 

@@ -38,19 +38,21 @@ class Contratista extends Model
     }
 
     // $contratista->estados()
-    // Representacion necesaria para aprovechar el fieldform-dropdown de Voyager
+    // Representacion requerida para aprovechar el fieldform-dropdown de Voyager
     public static function estados(){
         return [
             'aprobado' => 'aprobado',
-            'suspendido' => 'suspendido',
-            'solicitante' => 'solicitante'
+            'solicitante' => 'solicitante',
+            'rechazado' => 'rechazado'
         ];
     }
 
-    // $contratista->strestado
-    public function getStrestadoAttribute(){
-        if (in_array($this->estado, $this->estados())) {
-            return $this->estado;
+    // $contratista->isAprobado
+    public function getIsAprobadoAttribute() {
+        if ($this->user->role->name == 'contratista' || $this->estado == 'aprobado'){
+            return true;
         }
+        return false;
     }
+
 }
