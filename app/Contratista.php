@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ContratistaUpdated;
 
 class Contratista extends Model
 {
@@ -12,6 +13,10 @@ class Contratista extends Model
         'descripcion',
         'ultima_ubicacion',
         'estado'
+    ];
+
+    protected $contratistasEvents = [
+        'updated' => ContratistaUpdated::class
     ];
     
     public function anuncios()
@@ -54,5 +59,4 @@ class Contratista extends Model
         }
         return false;
     }
-
 }
