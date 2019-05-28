@@ -19,6 +19,12 @@ class ContratistaController extends Controller
         $contratista = Contratista::all();
         return response()->json($contratista, 200);
     }
+    // contratistas ALL PAGiNATE (/paginate)
+    public function paginate()
+    {
+        $contratista = Contratista::paginate(9);
+        return response()->json($contratista, 200);
+    }
 
     /**
      * Store a newly created resource in storage.
