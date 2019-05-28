@@ -27,8 +27,8 @@ class ContratoController extends Controller
     public function store(Request $request)
     {
         $contrato = Contrato::create($request->all());
-        $res = $contrato->save();
-        return response()->json($res, 200);
+        // $res = $contrato->save();
+        return response()->json($contrato, 200);
     }
 
     /**

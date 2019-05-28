@@ -22,8 +22,15 @@ class ContratistaController extends Controller
     // contratistas ALL PAGiNATE (/paginate)
     public function paginate()
     {
-        $contratista = Contratista::paginate(9);
+        $contratista = Contratista::with('tipotrabajos')->paginate(9);
         return response()->json($contratista, 200);
+    }
+
+    public function getContratos($id)
+    {
+        // $contratista = Contratista::with('contrato')->whereIn('id',[$id])->get();
+        $contratista = Contratista::with('contratos')->find($id);
+        return response()->json($contratista, 200);   
     }
 
     /**
