@@ -62,6 +62,23 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
+        // plans
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Planes',
+            'url'     => '',
+            'route'   => 'voyager.plans.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-credit-card',
+                'color'      => null,
+                'parent_id'  => $toolsMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.roles'),
@@ -74,7 +91,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-lock',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 1,
+                'order'      => 2,
             ])->save();
         }
 
@@ -91,7 +108,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-edit',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 2,
+                'order'      => 3,
             ])->save();
         }
 
@@ -108,7 +125,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-brush',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 3,
+                'order'      => 4,
             ])->save();
         }
 
@@ -124,7 +141,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-images',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 4,
+                'order'      => 5,
             ])->save();
         }
 
@@ -140,7 +157,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-data',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 5,
+                'order'      => 6,
             ])->save();
         }
 
@@ -156,7 +173,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-bread',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 6,
+                'order'      => 7,
             ])->save();
         }
 
@@ -172,7 +189,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-list',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 7,
+                'order'      => 8,
             ])->save();
         }
 
@@ -188,7 +205,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-compass',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 8,
+                'order'      => 9,
             ])->save();
         }
 
@@ -204,7 +221,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-settings',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 9,
+                'order'      => 10,
             ])->save();
         }
         
@@ -226,22 +243,7 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
-        // plans
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Planes',
-            'url'     => '',
-            'route'   => 'voyager.plans.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-credit-card',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 3,
-            ])->save();
-        }
+
 
         // anuncios
         $menuItem = MenuItem::firstOrNew([

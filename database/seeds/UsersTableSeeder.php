@@ -31,6 +31,7 @@ class UsersTableSeeder extends Seeder
             foreach (range(1,3) as $index) {
                 factory(User::class)->create([
                     'username' => 'user'.$index,
+                    'email' => 'user'.$index.'@email.com',
                     'password' => bcrypt('user'.$index)
                 ]);
             }
@@ -38,6 +39,7 @@ class UsersTableSeeder extends Seeder
             foreach (range(1,3) as $index) {
                 $user = factory(User::class)->create([
                     'username' => 'soli'.$index,
+                    'email' => 'soli'.$index.'@email.com',
                     'password' => bcrypt('soli'.$index),
                 ]);
                 

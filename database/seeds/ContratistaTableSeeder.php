@@ -19,6 +19,7 @@ class ContratistaTableSeeder extends Seeder
         foreach (range(1,3) as $index) {
             $user = factory(User::class)->create([
                 'username' => 'contra'.$index,
+                'email' => 'contra'.$index.'@email.com',
                 'password' => bcrypt('contra'.$index),
                 'role_id' => $role->id
             ]);
