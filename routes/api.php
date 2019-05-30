@@ -32,10 +32,11 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('contratista-removeTrabajo', 'ContratistaController@removeTrabajo');
     Route::get('contratista-paginate', 'ContratistaController@paginate');    
     Route::get('contratista-contratos/{id}', 'ContratistaController@getContratos');    
-    Route::resource('contrato', 'ContratoController');
+    Route::resource('contrato', 'ContratoController');    
     Route::resource('estado', 'EstadoController');
     Route::resource('plan', 'PlanController');
     Route::resource('tipotrabajo', 'TipoTrabajoController');
+    Route::get('tipoTrabajo-contratistas/{id}', 'TipoTrabajoController@getContratistas');
 
 });
 Route::options('{any}', ['middleware' => ['cors'], function () { return response(['status' => 'success']); }])->where('any', '.*');

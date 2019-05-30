@@ -22,7 +22,7 @@ class ContratistaController extends Controller
     // contratistas ALL PAGiNATE (/paginate)
     public function paginate()
     {
-        $contratista = Contratista::with('tipotrabajos')->paginate(9);
+        $contratista = Contratista::with(['user','tipotrabajos'])->paginate(9);
         return response()->json($contratista, 200);
     }
 
