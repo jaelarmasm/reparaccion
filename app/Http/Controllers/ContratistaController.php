@@ -53,7 +53,7 @@ class ContratistaController extends Controller
      */
     public function show($id)
     {
-        $contratista = Contratista::find($id);        
+        $contratista = Contratista::with('user')->find($id);        
         return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
     }
 
