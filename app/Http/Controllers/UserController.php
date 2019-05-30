@@ -65,6 +65,8 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'username' => $request->input('username'),            
             'password' => Hash::make($request->input('password')),
+            'telefono' =>$request->input('telefono'),
+            'direccion'=>$request->input('direccion'),
             'api_token' => Str::random(60),
         ]);        
         $role=Role::where('name',"user")->get();

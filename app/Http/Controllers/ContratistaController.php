@@ -27,8 +27,7 @@ class ContratistaController extends Controller
     }
 
     public function getContratos($id)
-    {
-        // $contratista = Contratista::with('contrato')->whereIn('id',[$id])->get();
+    {        
         $contratista = Contratista::with('contratos')->find($id);
         return response()->json($contratista, 200);   
     }
