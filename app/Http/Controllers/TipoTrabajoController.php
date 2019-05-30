@@ -20,7 +20,7 @@ class TipoTrabajoController extends Controller
 
     public function getContratistas($id)
     {        
-        $tipoTrabajos = TipoTrabajo::with('contratistas')->find($id);                     
+        $tipoTrabajos = TipoTrabajo::with('contratistas','contratistas.user')->find($id);                     
         return response()->json($tipoTrabajos, 200);   
     }
 
