@@ -101,10 +101,12 @@ class UserController extends Controller
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->username=$request->input('username');
-
+        
         if($request->hasFile('avatar'))
         {
-            $user->avatar=$request->file('avatar')->store('public/users');
+            $auxFile=$request->file('avatar')->store('/public/users');
+            dd($auxFile);
+            $user->avatar=$auxFile;
         }                
         $user->roles()->attach($request->input('idRole'));
         $user->telefono=$request->input('telefono');
