@@ -20,9 +20,15 @@ class ContratistaController extends Controller
         return response()->json($contratista, 200);
     }
     // contratistas ALL PAGiNATE (/paginate)
-    public function paginate()
+    public function paginate(Request $request)
     {
-        $contratista = Contratista::with(['user','tipotrabajos'])->paginate(9);
+        //tipo de trbajo o nombre de contratista
+        $term=$request->input('term');
+        // $contratista = Contratista::with(['user','tipotrabajos'])->where('name','like','%'.$request->term.'%')->paginate(9);
+        $contratista = Contratista::with(['user','tipotrabajos'])->join('users', function($join) use ($term) {
+            $join->on('contratistas.user_id', '=', 'users.id')
+            ->where('name','like','%'.$term.'%');                            
+        })->paginate(9);                
         return response()->json($contratista, 200);
     }
 
