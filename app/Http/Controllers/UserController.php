@@ -102,16 +102,23 @@ class UserController extends Controller
         $user->email=$request->input('email');
         $user->username=$request->input('username');
         
-        if($request->hasFile('avatar'))
-        {
-            $auxFile=$request->file('avatar')->store('/public/users');
-            dd($auxFile);
-            $user->avatar=$auxFile;
-        }                
+                       
         $user->roles()->attach($request->input('idRole'));
         $user->telefono=$request->input('telefono');
         $user->direccion=$request->input('direccion');
         $user->ubicacion=$request->input('ubicacion');        
+        $user->save();
+        return $user;
+    }
+
+    public function uploadImage(Request $request,$id)
+    {
+        $user=User::find($id); 
+        if($request->hasFile('avatar'))
+        {
+            $aux=$request->file('avatar')->store('/public/users');
+            $user->avatar=explode('public/',$aux)[1];
+        } 
         $user->save();
         return $user;
     }

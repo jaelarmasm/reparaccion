@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors'], function(){    
     Route::resource('userap','UserController');
     Route::post('user/edit-userap','UserController@update');
+    Route::post('user/edit-userphoto/{id}','UserController@uploadImage');
     Route::post('loginAPI','UserController@authenticate');
     Route::get('logoutAPI','UserController@logout');    
     Route::get('userap','UserController@show');    
