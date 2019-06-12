@@ -38,6 +38,14 @@ class ContratistaController extends Controller
         return response()->json($contratista, 200);   
     }
 
+
+    public function getContratosWithUserApply($id)
+    {        
+        //Se devuelve el objeto con el usuario que solicita el servicio
+        $contratista = Contratista::with(['contratos','contratos.user'])->find($id);
+        return response()->json($contratista, 200);   
+    }
+
     /**
      * Store a newly created resource in storage.
      *
