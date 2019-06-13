@@ -53,7 +53,8 @@ class ContratoController extends Controller
      */
     public function show($id)
     {
-        $contrato = Contrato::find($id);        
+        $contrato = Contrato::find($id); 
+        // $contrato->ubicacion=unserialize($contrato->ubicacion);               
         return response()->json($contrato, 200);
     }
 
@@ -70,18 +71,20 @@ class ContratoController extends Controller
         if($contrato)
         {
             $contrato->update($request->all());
+            // $contrato->ubicacion=unserialize($contrato->ubicacion);
             return response()->json($contrato, 200);
         }
         return response()->json("Not found", 404);
     }
 
-    public function updateLocation(Request $request,$id)
+    public function updateLocation(Request $request,$idcontrato)
     {
-        $contrato = Contrato::find($id);
+        $contrato = Contrato::find($idcontrato);
         if($contrato)
         {
-            $contrato->location = serialize($request->input("coors"));
+            $contrato->ubicacion = serialize($request->input("coors"));
             $contrato->save();
+            // $contrato->ubicacion=unserialize($contrato->ubicacion);
             return response()->json($contrato, 200);
         }
         return response()->json("Not found", 404);

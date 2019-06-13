@@ -23,6 +23,7 @@ class Contrato extends Model
 
     // protected $spatial = ['ubicacion'];
 
+
     public function contratista()
     {
         return $this->belongsTo(Contratista::class);
@@ -34,5 +35,10 @@ class Contrato extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getUbicacionAttribute($value)
+    {
+        return unserialize($value);
     }
 }
