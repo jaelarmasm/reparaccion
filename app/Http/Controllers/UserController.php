@@ -111,10 +111,10 @@ class UserController extends Controller
         return $user;
     }    
 
-    public function getContratosWithContratista($id)
+    public function getContratosWithContratista($idsolicitante)
     {        
         //Se devuelve el objeto con el usuario que solicita el servicio
-        $contratista = User::with(['contratos','contratos.contratista'])->find($id);
+        $contratista = User::with(['contratos','contratos.contratista'])->find($idsolicitante);
         return response()->json($contratista, 200);   
     }
 

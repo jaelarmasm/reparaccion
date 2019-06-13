@@ -32,7 +32,17 @@ class ContratoController extends Controller
     }
 
 
-
+    public function uploadImage(Request $request,$idcontrato)
+    {
+        $contrato=Contrato::find($idcontrato); 
+        if($request->hasFile('foto'))
+        {
+            $aux=$request->file('foto')->store('/public/contratos');
+            $contrato->foto=explode('public/',$aux)[1];
+        } 
+        $contrato->save();
+        return $contrato;
+    }
     
 
     /**
@@ -56,9 +66,27 @@ class ContratoController extends Controller
      */
     public function update(Request $request, Contrato $contrato)
     {
-        $contrato = Contrato::firstOrCreate($request->all());
-        return response()->json($contrato, 200);
+        $contrato = Contrato::find($request->input("id"));
+        if($contrato)
+        {
+            $contrato->update($request->all());
+            return response()->json($contrato, 200);
+        }
+        return response()->json("Not found", 404);
     }
+
+    public function updateLocation(Request $request,$id)
+    {
+        $contrato = Contrato::find($id);
+        if($contrato)
+        {
+            $contrato->location = serialize($request->input("coors"));
+            $contrato->save();
+            return response()->json($contrato, 200);
+        }
+        return response()->json("Not found", 404);
+    }
+
 
     /**
      * Remove the specified resource from storage.
