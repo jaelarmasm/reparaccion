@@ -65,9 +65,9 @@ class ContratoController extends Controller
      * @param  \App\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request,$idcontrato)
     {
-        $contrato = Contrato::find($request->input("id"));
+        $contrato = Contrato::find($idcontrato);
         if($contrato)
         {
             $contrato->update($request->all());
