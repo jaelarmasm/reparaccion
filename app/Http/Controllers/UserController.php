@@ -109,7 +109,15 @@ class UserController extends Controller
         $user->ubicacion=$request->input('ubicacion');        
         $user->save();
         return $user;
+    }    
+
+    public function getContratosWithContratista($id)
+    {        
+        //Se devuelve el objeto con el usuario que solicita el servicio
+        $contratista = User::with(['contratos','contratos.contratista'])->find($id);
+        return response()->json($contratista, 200);   
     }
+
 
     public function uploadImage(Request $request,$id)
     {

@@ -33,7 +33,10 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('contratista-removeTrabajo', 'ContratistaController@removeTrabajo');
     Route::get('contratista-paginate', 'ContratistaController@paginate');    
     Route::get('contratista-contratos/{id}', 'ContratistaController@getContratos');    
+    
     Route::get('contratista-contratos-user/{id}', 'ContratistaController@getContratosWithUserApply');    
+    Route::get('user-contratos-contratista/{idsolicitante}', 'UserController@getContratosWithContratista');    
+    
     Route::resource('contrato', 'ContratoController');    
     Route::resource('estado', 'EstadoController');
     Route::resource('plan', 'PlanController');
