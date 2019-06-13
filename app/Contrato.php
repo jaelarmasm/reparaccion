@@ -36,9 +36,4 @@ class Contrato extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function getUbicacionAttribute($value)
-    {
-        return unserialize($value);
-    }
 }

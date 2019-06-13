@@ -37,7 +37,7 @@ Route::group(['middleware' => 'cors'], function(){
     Route::get('contratista-contratos-user/{id}', 'ContratistaController@getContratosWithUserApply');    
     Route::get('user-contratos-contratista/{idsolicitante}', 'UserController@getContratosWithContratista');    
     Route::post('contrato/edit-contratophoto/{idcontrato}','ContratoController@uploadImage');
-    Route::post('contrato/location/{idcontrato}', 'ContratoController@updateLocation');    
+    // Route::post('contrato/location/{idcontrato}', 'ContratoController@updateLocation');    
     Route::resource('contrato', 'ContratoController');    
 
     Route::resource('estado', 'EstadoController');
