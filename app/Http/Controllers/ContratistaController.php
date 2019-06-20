@@ -20,16 +20,29 @@ class ContratistaController extends Controller
         return response()->json($contratista, 200);
     }
     // contratistas ALL PAGiNATE (/paginate)
-    public function paginate()
+    public function paginate(Request $request)
     {
-        $contratista = Contratista::with('tipotrabajos')->paginate(9);
+        //tipo de trbajo o nombre de contratista
+        $term=$request->input('term');
+        // $contratista = Contratista::with(['user','tipotrabajos'])->where('name','like','%'.$request->term.'%')->paginate(9);
+        $contratista = Contratista::with(['user','tipotrabajos'])->join('users', function($join) use ($term) {
+            $join->on('contratistas.user_id', '=', 'users.id')
+            ->where('name','like','%'.$term.'%');                            
+        })->paginate(9);                
         return response()->json($contratista, 200);
     }
 
     public function getContratos($id)
-    {
-        // $contratista = Contratista::with('contrato')->whereIn('id',[$id])->get();
+    {        
         $contratista = Contratista::with('contratos')->find($id);
+        return response()->json($contratista, 200);   
+    }
+
+
+    public function getContratosWithUserApply($id)
+    {        
+        //Se devuelve el objeto con el usuario que solicita el servicio
+        $contratista = Contratista::with(['contratos','contratos.user'])->find($id);
         return response()->json($contratista, 200);   
     }
 
@@ -54,7 +67,7 @@ class ContratistaController extends Controller
      */
     public function show($id)
     {
-        $contratista = Contratista::find($id);        
+        $contratista = Contratista::with('user')->find($id);        
         return response()->json(["contratista"=>$contratista,"tiposTrabajo"=>$contratista->tipotrabajos],200);
     }
 

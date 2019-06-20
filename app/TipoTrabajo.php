@@ -10,7 +10,7 @@ class Tipotrabajo extends Model
     //
     public function contratistas()
     {
-        return $this->belongsToMany(Contratista::class,'contratista_tipocontratista');
+        return $this->belongsToMany(Contratista::class,'contratista_tipocontratistas');
     }
     public function anuncios()
     {

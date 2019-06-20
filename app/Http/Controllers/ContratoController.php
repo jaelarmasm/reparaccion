@@ -31,6 +31,20 @@ class ContratoController extends Controller
         return response()->json($contrato, 200);
     }
 
+
+    public function uploadImage(Request $request,$idcontrato)
+    {
+        $contrato=Contrato::find($idcontrato); 
+        if($request->hasFile('foto'))
+        {
+            $aux=$request->file('foto')->store('/public/contratos');
+            $contrato->foto=explode('public/',$aux)[1];
+        } 
+        $contrato->save();
+        return $contrato;
+    }
+    
+
     /**
      * Display the specified resource.
      *
@@ -39,7 +53,8 @@ class ContratoController extends Controller
      */
     public function show($id)
     {
-        $contrato = Contrato::find($id);        
+        $contrato = Contrato::find($id); 
+        // $contrato->ubicacion=unserialize($contrato->ubicacion);               
         return response()->json($contrato, 200);
     }
 
@@ -50,11 +65,31 @@ class ContratoController extends Controller
      * @param  \App\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request,$idcontrato)
     {
-        $contrato = Contrato::firstOrCreate($request->all());
-        return response()->json($contrato, 200);
+        $contrato = Contrato::find($idcontrato);
+        if($contrato)
+        {
+            $contrato->update($request->all());
+            // $contrato->ubicacion=unserialize($contrato->ubicacion);
+            return response()->json($contrato, 200);
+        }
+        return response()->json("Not found", 404);
     }
+
+    // public function updateLocation(Request $request,$idcontrato)
+    // {
+    //     $contrato = Contrato::find($idcontrato);
+    //     if($contrato)
+    //     {
+    //         $contrato->ubicacion = serialize($request->input("coors"));
+    //         $contrato->save();
+    //         // $contrato->ubicacion=unserialize($contrato->ubicacion);
+    //         return response()->json($contrato, 200);
+    //     }
+    //     return response()->json("Not found", 404);
+    // }
+
 
     /**
      * Remove the specified resource from storage.

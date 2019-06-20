@@ -23,6 +23,7 @@ class Contrato extends Model
 
     // protected $spatial = ['ubicacion'];
 
+
     public function contratista()
     {
         return $this->belongsTo(Contratista::class);

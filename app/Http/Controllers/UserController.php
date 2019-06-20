@@ -65,6 +65,8 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'username' => $request->input('username'),            
             'password' => Hash::make($request->input('password')),
+            'telefono' =>$request->input('telefono'),
+            'direccion'=>$request->input('direccion'),
             'api_token' => Str::random(60),
         ]);        
         $role=Role::where('name',"user")->get();
@@ -99,14 +101,32 @@ class UserController extends Controller
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->username=$request->input('username');
-        if($request->hasFile('avatar'))
-        {
-            $user->avatar=$request->file('avatar')->store('users');
-        }                
+        
+                       
         $user->roles()->attach($request->input('idRole'));
         $user->telefono=$request->input('telefono');
         $user->direccion=$request->input('direccion');
         $user->ubicacion=$request->input('ubicacion');        
+        $user->save();
+        return $user;
+    }    
+
+    public function getContratosWithContratista($idsolicitante)
+    {        
+        //Se devuelve el objeto con el usuario que solicita el servicio
+        $contratista = User::with(['contratos','contratos.contratista'])->find($idsolicitante);
+        return response()->json($contratista, 200);   
+    }
+
+
+    public function uploadImage(Request $request,$id)
+    {
+        $user=User::find($id); 
+        if($request->hasFile('avatar'))
+        {
+            $aux=$request->file('avatar')->store('/public/users');
+            $user->avatar=explode('public/',$aux)[1];
+        } 
         $user->save();
         return $user;
     }

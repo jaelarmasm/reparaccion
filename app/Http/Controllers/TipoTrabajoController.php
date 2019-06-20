@@ -18,6 +18,12 @@ class TipoTrabajoController extends Controller
         return response()->json($tipoTrabajos, 200);
     }
 
+    public function getContratistas($id)
+    {        
+        $tipoTrabajos = TipoTrabajo::with('contratistas','contratistas.user')->find($id);                     
+        return response()->json($tipoTrabajos, 200);   
+    }
+
     /**
      * Store a newly created resource in storage.
      *
