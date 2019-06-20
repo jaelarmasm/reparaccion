@@ -1117,7 +1117,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
         
-        // TODO Que se muestre el nombre del contratista y no el id de su usuario
         $dataRow = $this->dataRow($anuncioDataType, 'anuncio_belongsto_contratista_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -1184,7 +1183,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 6,
+                'order'        => 11,
             ])->save();
         }
 
@@ -1199,7 +1198,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 7,
+                'order'        => 6,
             ])->save();
         }
 
@@ -1224,7 +1223,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'tipotrabajos',
                     'pivot'       => 0,
                 ],
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
                 
@@ -1239,7 +1238,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
     }

@@ -73,7 +73,21 @@
                                     @if (isset($row->details->view))
                                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
                                     @elseif ($row->type == 'relationship')
-                                        @include('voyager::formfields.relationship', ['options' => $row->details])
+                                        @if ($row->details->column == 'contratista_id')
+                                            @php
+                                                $contratistas = App\Extra::contratistasAprobados();
+                                            @endphp
+                                            <select class="form-control" name="contratista_id" id="contratista_id">
+                                                @if(!$row->required)
+                                                    <option value="">{{__('voyager::generic.none')}}</option>
+                                                @endif
+                                                @foreach($contratistas as $key => $contratista)
+                                                    <option value="{{ $contratista->id }}" @if($dataTypeContent->{$row->details->column} == $contratista->id){{ 'selected="selected"' }}@endif>{{ $contratista->user()->first()->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @else
+                                            @include('voyager::formfields.relationship', ['options' => $row->details])
+                                        @endif
                                     @else
                                         {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                     @endif
