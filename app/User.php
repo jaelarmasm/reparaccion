@@ -61,6 +61,11 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(Contratista::class);
     }
+
+    public function contratista()
+    {
+        return $this->hasOne(Contratista::class);
+    }
     
     public function roles()
     {
