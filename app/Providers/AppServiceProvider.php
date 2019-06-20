@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        Schema::defaultIntegerLength(191);
         Contratista::observe(ContratistaObserver::class);
         User::observe(UserObserver::class);
     }
