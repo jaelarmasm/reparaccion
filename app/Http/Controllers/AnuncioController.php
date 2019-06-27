@@ -18,6 +18,12 @@ class AnuncioController extends Controller
         $anuncios = Anuncio::all();
         return response()->json($anuncios, 200);
     }
+
+    public function getAnuncioByAprobado()
+    {
+        $anuncios = Anuncio::where('aprobado', 1)->get();
+        return response()->json($anuncios, 200);
+    }
     /**
      * Store a newly created resource in storage.
      *

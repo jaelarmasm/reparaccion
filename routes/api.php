@@ -41,7 +41,8 @@ Route::group(['middleware' => 'cors'], function(){
     
     
     Route::post('anuncio/edit-anunciophoto/{idanuncio}','AnuncioController@uploadImage');
-    Route::post('anuncio/edit/{idanuncio}','AnunciooController@update');
+    Route::post('anuncio/edit/{idanuncio}','AnuncioController@update');
+    Route::get('anuncio/aprobado','AnuncioController@getAnuncioByAprobado');
     // Route::post('contrato/location/{idcontrato}', 'ContratoController@updateLocation');    
     Route::resource('contrato', 'ContratoController');    
 
