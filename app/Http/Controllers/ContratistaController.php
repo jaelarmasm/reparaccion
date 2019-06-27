@@ -31,9 +31,9 @@ class ContratistaController extends Controller
         //     ->where('name','like','%'.$term.'%');                          
         // })->paginate(9);        
         $contratista = Contratista::with(['user','tipotrabajos'])->join('users', function($join) use ($term) {
-                $join->on('user_id', '=', 'users.id')
-                ->where('name','like','%'.$term.'%');                                          
-            })->paginate(9,array('contratistas.*'));                
+            $join->on('user_id', '=', 'users.id')
+            ->where('name','like','%'.$term.'%');                                          
+        })->paginate(9,array('contratistas.*'));                
         return response()->json($contratista, 200);
     }
 
