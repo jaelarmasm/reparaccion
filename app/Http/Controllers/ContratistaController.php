@@ -52,7 +52,7 @@ class ContratistaController extends Controller
 
     public function getContratosWithUserApply($id)
     {        
-        //Se devuelve el objeto con el usuario que solicita el servicio
+        //Se devuelve el objeto con el usuario que solicita el servicio        
         $contratista = Contratista::with(['contratos','contratos.user'])->find($id);
         return response()->json($contratista, 200);   
     }
@@ -64,9 +64,10 @@ class ContratistaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $contratista = Contratista::create($request->all());
-        // $res = $contratista->save();
+    {        
+        $contratistaInst=$request->all();
+        $contratistaInst->estado = 'solicitante';
+        $contratista = Contratista::create($contratistaInst);    
         return response()->json($contratista, 200);
     }
 
