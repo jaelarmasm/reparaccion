@@ -18,7 +18,6 @@ class AnuncioController extends Controller
         $anuncios = Anuncio::all();
         return response()->json($anuncios, 200);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -43,6 +42,18 @@ class AnuncioController extends Controller
     {
         $anuncio = Anuncio::find($id);        
         return response()->json($anuncio, 200);
+    }
+
+    public function uploadImage(Request $request,$idanuncio)
+    {
+        $anuncio=Anuncio::find($idanuncio); 
+        if($request->hasFile('imagen'))
+        {
+            $aux=$request->file('imagen')->store('/storage/anuncios');
+            $anuncio->imagen=explode('public/',$aux)[1];
+        } 
+        $anuncio->save();
+        return $anuncio;
     }
 
     /**
