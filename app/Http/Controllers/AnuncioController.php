@@ -73,7 +73,7 @@ class AnuncioController extends Controller
     public function update(Request $request, anuncio $anuncio)
     {
         
-        $anuncio = Contratista::find($request->input("id"));
+        $anuncio = Anuncio::find($request->input("id"));
         if($anuncio)
         {
             $anuncio->update($request->all());
