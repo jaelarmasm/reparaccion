@@ -14,14 +14,14 @@ class AnuncioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         $anuncios = Anuncio::all();
         return response()->json($anuncios, 200);
     }
 
-    public function getAnuncioByAprobado()
-    {
-        $anuncios = Anuncio::where('aprobado', 1)->get();
+    public function getAnuncioByAprobados()
+    {        
+        $anuncios = Anuncio::where('aprobado', 1)->with(['contratista','tipotrabajo','contratista.user'])->get();        
         return response()->json($anuncios, 200);
     }
     /**
