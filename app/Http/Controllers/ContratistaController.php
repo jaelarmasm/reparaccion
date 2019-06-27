@@ -43,6 +43,12 @@ class ContratistaController extends Controller
         return response()->json($contratista, 200);   
     }
 
+    public function getAnuncios($id)
+    {        
+        $contratista = Contratista::with('anuncios')->find($id);
+        return response()->json($contratista, 200);   
+    }
+
 
     public function getContratosWithUserApply($id)
     {        

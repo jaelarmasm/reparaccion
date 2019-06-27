@@ -24,6 +24,7 @@ class AnuncioController extends Controller
         $anuncios = Anuncio::where('aprobado', 1)->with(['contratista','tipotrabajo','contratista.user'])->get();        
         return response()->json($anuncios, 200);
     }
+
     /**
      * Store a newly created resource in storage.
      *
