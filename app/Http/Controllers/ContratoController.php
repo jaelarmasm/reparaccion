@@ -37,7 +37,7 @@ class ContratoController extends Controller
         $contrato=Contrato::find($idcontrato); 
         if($request->hasFile('foto'))
         {
-            $aux=$request->file('foto')->store('/public/contratos');
+            $aux=$request->file('foto')->store('/storage/contratos');
             $contrato->foto=explode('public/',$aux)[1];
         } 
         $contrato->save();

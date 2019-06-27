@@ -124,7 +124,7 @@ class UserController extends Controller
         $user=User::find($id); 
         if($request->hasFile('avatar'))
         {
-            $aux=$request->file('avatar')->store('/public/users');
+            $aux=$request->file('avatar')->store('/storage/users');
             $user->avatar=explode('public/',$aux)[1];
         } 
         $user->save();

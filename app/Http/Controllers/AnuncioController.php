@@ -14,11 +14,16 @@ class AnuncioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         $anuncios = Anuncio::all();
         return response()->json($anuncios, 200);
     }
 
+    public function getAnuncioByAprobados()
+    {        
+        $anuncios = Anuncio::where('aprobado', 1)->with(['contratista','tipotrabajo','contratista.user'])->get();        
+        return response()->json($anuncios, 200);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -29,8 +34,8 @@ class AnuncioController extends Controller
     {
 
         $anuncio = Anuncio::create($request->all());
-        $res = $anuncio->save();
-        return response()->json($res, 200);
+        // $res = $anuncio->save();
+        return response()->json($anuncio, 200);
     }
 
     /**
@@ -45,6 +50,18 @@ class AnuncioController extends Controller
         return response()->json($anuncio, 200);
     }
 
+    public function uploadImage(Request $request,$idanuncio)
+    {
+        $anuncio=Anuncio::find($idanuncio); 
+        if($request->hasFile('imagen'))
+        {
+            $aux=$request->file('imagen')->store('/storage/anuncios');
+            $anuncio->imagen=explode('public/',$aux)[1];
+        } 
+        $anuncio->save();
+        return $anuncio;
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -54,9 +71,14 @@ class AnuncioController extends Controller
      */
     public function update(Request $request, anuncio $anuncio)
     {
-
-        $anuncio = Anuncio::firstOrCreate($request->all());
-        return response()->json($anuncio, 200);
+        
+        $anuncio = Contratista::find($request->input("id"));
+        if($anuncio)
+        {
+            $anuncio->update($request->all());
+            return response()->json($anuncio, 200);
+        }
+        return response()->json("Not found", 404);
     }
 
     /**
