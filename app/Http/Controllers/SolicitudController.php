@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use TCG\Voyager\Models\Role;
 use TCG\Voyager\Facades\Voyager;
 
 class SolicitudController extends Controller
