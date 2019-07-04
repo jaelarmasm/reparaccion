@@ -64,10 +64,11 @@ class ContratistaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
-        $contratistaInst=$request->all();
-        $contratistaInst->estado = 'solicitante';
-        $contratista = Contratista::create($contratistaInst);    
+    {    
+         
+        
+        $request["estado"]= 'solicitante';
+        $contratista = Contratista::create($request->all());    
         return response()->json($contratista, 200);
     }
 

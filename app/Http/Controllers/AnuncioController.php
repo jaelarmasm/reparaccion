@@ -56,10 +56,10 @@ class AnuncioController extends Controller
         $anuncio=Anuncio::find($idanuncio); 
         if($request->hasFile('imagen'))
         {            
-            $aux=$request->file('imagen')->store('/storage/anuncios');
-            $anuncio->imagen=$aux;
-            // dd($aux);
-            // $anuncio->imagen=explode('public/',$aux)[1];
+            $aux=$request->file('imagen')->store('public/anuncios');
+            $anuncio->imagen=explode('public/',$aux)[1];
+          
+        
         } 
         $anuncio->save();
         return $anuncio;
