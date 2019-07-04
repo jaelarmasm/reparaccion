@@ -6,6 +6,7 @@ use App\Contratista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class ContratistaController extends Controller
 {
@@ -24,11 +25,15 @@ class ContratistaController extends Controller
     {
         //tipo de trbajo o nombre de contratista
         $term=$request->input('term');
-        // $contratista = Contratista::with(['user','tipotrabajos'])->where('name','like','%'.$request->term.'%')->paginate(9);
+        // $contratista = Contratista::with(['user','tipotrabajos'])->paginate(9);
+        // $contratista = Contratista::with(['user','tipotrabajos'])->join('users', function($join) use ($term) {
+        //     $join->on('contratistas.user_id', '=', 'users.id')
+        //     ->where('name','like','%'.$term.'%');                          
+        // })->paginate(9);        
         $contratista = Contratista::with(['user','tipotrabajos'])->join('users', function($join) use ($term) {
-            $join->on('contratistas.user_id', '=', 'users.id')
-            ->where('name','like','%'.$term.'%');                            
-        })->paginate(9);                
+            $join->on('user_id', '=', 'users.id')
+            ->where('name','like','%'.$term.'%');                                          
+        })->paginate(9,array('contratistas.*'));                
         return response()->json($contratista, 200);
     }
 
@@ -38,10 +43,16 @@ class ContratistaController extends Controller
         return response()->json($contratista, 200);   
     }
 
+    public function getAnuncios($id)
+    {        
+        $contratista = Contratista::with('anuncios')->find($id);
+        return response()->json($contratista, 200);   
+    }
+
 
     public function getContratosWithUserApply($id)
     {        
-        //Se devuelve el objeto con el usuario que solicita el servicio
+        //Se devuelve el objeto con el usuario que solicita el servicio        
         $contratista = Contratista::with(['contratos','contratos.user'])->find($id);
         return response()->json($contratista, 200);   
     }
@@ -53,9 +64,11 @@ class ContratistaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $contratista = Contratista::create($request->all());
-        // $res = $contratista->save();
+    {    
+         
+        
+        $request["estado"]= 'solicitante';
+        $contratista = Contratista::create($request->all());    
         return response()->json($contratista, 200);
     }
 

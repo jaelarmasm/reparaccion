@@ -21,7 +21,7 @@ $factory->define(Contratista::class, function (Faker $faker) {
         'user_id' => 1, //admin
         'plan_id' => rand(1, 4),
         'descripcion' => $faker->text,
-        'ultima_ubicacion' => $faker->latitude.','.$faker->longitude,
+        'ultima_ubicacion' => '{"lat":'.$faker->latitude.',"lng":'.$faker->longitude.'}',
         'estado' => 'aprobado'
     ];
 });

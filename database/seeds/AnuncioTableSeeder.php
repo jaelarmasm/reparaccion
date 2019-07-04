@@ -33,6 +33,7 @@ class AnuncioTableSeeder extends Seeder
                         'titulo' => $contratista->user()->first()->name .' '. $tipotrabajo->nombre,
                         'imagen' => '/anuncios/default.png',
                         'descripcion' => $faker->text,
+                        'clicks' => rand(5,50)
                 ]);
             }
         }
